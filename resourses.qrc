@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/pics">
+        <file>pics/saveBtn.png</file>
+        <file>pics/detailBtn.png</file>
+        <file>pics/gameBtn.png</file>
+        <file>pics/exitBtn.png</file>
+        <file>pics/shopBtn.png</file>
+        <file>pics/magician.png</file>
+        <file>pics/swordsman.png</file>
+        <file>pics/gird.png</file>
+        <file>pics/block.png</file>
+        <file>pics/edge.png</file>
+        <file>pics/background.png</file>
+        <file>pics/moveicon.png</file>
+        <file>pics/moveicon_1.png</file>
+        <file>pics/hamadryad.png</file>
+        <file>pics/bloodbar.png</file>
+        <file>pics/demon.png</file>
+        <file>pics/mutated_demon.png</file>
+        <file>pics/wizard.png</file>
+        <file>pics/pawnbloodbar_inner.png</file>
+        <file>pics/pawnbloodbar_outer.png</file>
+        <file>pics/homepage.png</file>
+        <file>pics/shop.png</file>
+        <file>pics/itemBack.png</file>
+    </qresource>
+    <qresource prefix="/buffs">
+        <file>pics/atkUpBuff.png</file>
+        <file>pics/atpbuff.png</file>
+        <file>pics/coinbuff.png</file>
+        <file>pics/hpbuff.png</file>
+        <file>pics/revivebuff.png</file>
+        <file>pics/spdbuff.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,50 @@
+/********************************************************************************
+** Form generated from reading UI file 'gamepage.ui'
+**
+** Created by: Qt User Interface Compiler version 6.5.3
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_GAMEPAGE_H
+#define UI_GAMEPAGE_H
+
+#include <QtCore/QVariant>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_NAMESPACE
+
+class Ui_GamePage
+{
+public:
+    QWidget *widget;
+
+    void setupUi(QWidget *GamePage)
+    {
+        if (GamePage->objectName().isEmpty())
+            GamePage->setObjectName("GamePage");
+        GamePage->resize(1121, 761);
+        widget = new QWidget(GamePage);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(90, 110, 951, 561));
+
+        retranslateUi(GamePage);
+
+        QMetaObject::connectSlotsByName(GamePage);
+    } // setupUi
+
+    void retranslateUi(QWidget *GamePage)
+    {
+        GamePage->setWindowTitle(QCoreApplication::translate("GamePage", "Form", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class GamePage: public Ui_GamePage {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_GAMEPAGE_H
