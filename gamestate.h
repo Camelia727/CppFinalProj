@@ -86,16 +86,18 @@ private:
     int level;
     int exp;
     bool bleeding;
+    bool crit;
     bool dead;
 public:
     explicit Pawn(History* his, RoleType type, QObject* parent = nullptr);
     void beHurt(double dmg = 0.0);
     void recoverHp(double rec = 0.0) {hp += rec;}
-    void attack(Enemy* enemy) {enemy->getHurt(atk);}
+    void attack(Enemy* enemy);
     void setBleeding(bool b) {bleeding = b;}
     void setPos(QPointF npos) {pos = npos;}
     void gainExp(const int e) {exp+=e; if(exp >= 100) levelUp();}
     void levelUp() {level++;exp-=100;emit levelup();}
+    void gainBuff(int buff);
     QPointF getPos() const {return pos;}
     QPixmap getPic() const {return pic;}
     QRectF getRect() const {return QRectF(pos, QSizeF(40,70));}
@@ -127,6 +129,7 @@ private:
     int id;
     int rounds;
     int coins;
+    qint64 remainedtime;
 
     GameMap Map;
     DiffiLevel difficulty;
@@ -141,6 +144,7 @@ private:
     QTimer* enemyAttackTimer;
     QTimer* enemyUpdateTimer;
     QTimer* pawnAttackTimer;
+    QTimer* pawnMoveTimer;
     QTimer* roundTimer;
 
 
@@ -170,9 +174,12 @@ public:
     void EnemyCreate(EnemyType enemy_type = EnemyType::BASE, QPointF pos = QPoint(0,0));
     void EnemyMove(Enemy* enemy = nullptr);
     void EnemyDead(Enemy* enemy = nullptr);
+    void gainBuff(int buff);
+    void setStatus(Status status);
 
 signals:
     void levelup();
+    void pawnmoving();
     void gameUpdate();
     void gameLose();
 
@@ -182,6 +189,7 @@ public slots:
     void EnemyUpdate();
     void PawnAttack();
     void PawnLevelUp();
+    void pawnMoving() {emit pawnmoving();}
     void GameLose();
     void GameStateChange(Status nxt_status);
 };

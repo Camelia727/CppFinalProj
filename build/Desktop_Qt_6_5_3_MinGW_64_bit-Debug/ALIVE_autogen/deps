@@ -2,6 +2,8 @@ ALIVE_autogen/timestamp: \
 	F:/QTproj/ALIVE/CMakeLists.txt \
 	F:/QTproj/ALIVE/agents.cpp \
 	F:/QTproj/ALIVE/agents.h \
+	F:/QTproj/ALIVE/buffpage.cpp \
+	F:/QTproj/ALIVE/buffpage.h \
 	F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/moc_predefs.h \
 	F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/3.29.3/CMakeCXXCompiler.cmake \
@@ -592,6 +594,7 @@ ALIVE_autogen/timestamp: \
 	F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h \
 	F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
 	F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
+	F:/QTproj/ALIVE/buffpage.ui \
 	F:/QTproj/ALIVE/gamelosebox.ui \
 	F:/QTproj/ALIVE/gamepage.ui \
 	F:/QTproj/ALIVE/homepage.ui \

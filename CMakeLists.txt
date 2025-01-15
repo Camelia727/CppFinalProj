@@ -40,6 +40,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         rolewidget.h rolewidget.cpp
         history.h history.cpp
         gamelosebox.h gamelosebox.cpp gamelosebox.ui
+        buffpage.h buffpage.cpp buffpage.ui
+
 
 
     )

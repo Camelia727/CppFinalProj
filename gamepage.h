@@ -8,6 +8,7 @@
 #include "gamestate.h"
 #include "gamelosebox.h"
 #include "history.h"
+#include "buffpage.h"
 
 namespace Ui {
 class GamePage;
@@ -75,12 +76,13 @@ private:
     Ui::GamePage *ui;
     History* history;
     GameState* gamestate;
+    BuffPage* buffpage;
     GameMap map;
     PawnWidget* pawn_widget;
     MoveIcon* move_icon;
     QPoint diff_; // 鼠标拖动事件
     QTimer* pawnMoveTimer;
-    bool keyPressed[256] = {false};
+    QList<bool> keyPressed;
 
 protected:
     void paintEvent(QPaintEvent* event) override;
@@ -106,6 +108,7 @@ public slots:
     void endExit();                 // 结束本场游戏并直接退出
 
     void buffPageOpen();            // 游戏角色升级后，选择buff
+    void buffsel(int buff);         // 选好buff传给gamestate
 };
 
 #endif // GAMEPAGE_H

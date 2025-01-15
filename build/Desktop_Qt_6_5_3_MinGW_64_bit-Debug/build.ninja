@@ -153,6 +153,14 @@ build CMakeFiles/ALIVE.dir/gamelosebox.cpp.obj: CXX_COMPILER__ALIVE_unscanned_De
   OBJECT_DIR = CMakeFiles\ALIVE.dir
   OBJECT_FILE_DIR = CMakeFiles\ALIVE.dir
 
+build CMakeFiles/ALIVE.dir/buffpage.cpp.obj: CXX_COMPILER__ALIVE_unscanned_Debug F$:/QTproj/ALIVE/buffpage.cpp || cmake_object_order_depends_target_ALIVE
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\ALIVE.dir\buffpage.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IF:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/include -IF:/QTproj/ALIVE -isystem F:/Qt/6.5.3/mingw_64/include/QtCore -isystem F:/Qt/6.5.3/mingw_64/include -isystem F:/Qt/6.5.3/mingw_64/mkspecs/win32-g++ -isystem F:/Qt/6.5.3/mingw_64/include/QtWidgets -isystem F:/Qt/6.5.3/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\ALIVE.dir
+  OBJECT_FILE_DIR = CMakeFiles\ALIVE.dir
+
 build CMakeFiles/ALIVE.dir/ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp.obj: CXX_COMPILER__ALIVE_unscanned_Debug F$:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp || cmake_object_order_depends_target_ALIVE
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\ALIVE.dir\ALIVE_autogen\EWIEGA46WW\qrc_resourses.cpp.obj.d
@@ -169,7 +177,7 @@ build CMakeFiles/ALIVE.dir/ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp.obj: CXX_C
 #############################################
 # Link the executable ALIVE.exe
 
-build ALIVE.exe: CXX_EXECUTABLE_LINKER__ALIVE_Debug CMakeFiles/ALIVE.dir/ALIVE_autogen/mocs_compilation.cpp.obj CMakeFiles/ALIVE.dir/main.cpp.obj CMakeFiles/ALIVE.dir/homepage.cpp.obj CMakeFiles/ALIVE.dir/agents.cpp.obj CMakeFiles/ALIVE.dir/rolepage.cpp.obj CMakeFiles/ALIVE.dir/roleedit.cpp.obj CMakeFiles/ALIVE.dir/mybutton.cpp.obj CMakeFiles/ALIVE.dir/gamestate.cpp.obj CMakeFiles/ALIVE.dir/shoppage.cpp.obj CMakeFiles/ALIVE.dir/gamepage.cpp.obj CMakeFiles/ALIVE.dir/rolewidget.cpp.obj CMakeFiles/ALIVE.dir/history.cpp.obj CMakeFiles/ALIVE.dir/gamelosebox.cpp.obj CMakeFiles/ALIVE.dir/ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp.obj | F$:/Qt/6.5.3/mingw_64/lib/libQt6Widgets.a F$:/Qt/6.5.3/mingw_64/lib/libQt6Gui.a F$:/Qt/6.5.3/mingw_64/lib/libQt6Core.a F$:/Qt/6.5.3/mingw_64/lib/libQt6EntryPoint.a || ALIVE_autogen ALIVE_autogen_timestamp_deps
+build ALIVE.exe: CXX_EXECUTABLE_LINKER__ALIVE_Debug CMakeFiles/ALIVE.dir/ALIVE_autogen/mocs_compilation.cpp.obj CMakeFiles/ALIVE.dir/main.cpp.obj CMakeFiles/ALIVE.dir/homepage.cpp.obj CMakeFiles/ALIVE.dir/agents.cpp.obj CMakeFiles/ALIVE.dir/rolepage.cpp.obj CMakeFiles/ALIVE.dir/roleedit.cpp.obj CMakeFiles/ALIVE.dir/mybutton.cpp.obj CMakeFiles/ALIVE.dir/gamestate.cpp.obj CMakeFiles/ALIVE.dir/shoppage.cpp.obj CMakeFiles/ALIVE.dir/gamepage.cpp.obj CMakeFiles/ALIVE.dir/rolewidget.cpp.obj CMakeFiles/ALIVE.dir/history.cpp.obj CMakeFiles/ALIVE.dir/gamelosebox.cpp.obj CMakeFiles/ALIVE.dir/buffpage.cpp.obj CMakeFiles/ALIVE.dir/ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp.obj | F$:/Qt/6.5.3/mingw_64/lib/libQt6Widgets.a F$:/Qt/6.5.3/mingw_64/lib/libQt6Gui.a F$:/Qt/6.5.3/mingw_64/lib/libQt6Core.a F$:/Qt/6.5.3/mingw_64/lib/libQt6EntryPoint.a || ALIVE_autogen ALIVE_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = F:/Qt/6.5.3/mingw_64/lib/libQt6Widgets.a  F:/Qt/6.5.3/mingw_64/lib/libQt6Gui.a  F:/Qt/6.5.3/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  F:/Qt/6.5.3/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -256,7 +264,7 @@ build ALIVE_autogen_timestamp_deps: phony
 #############################################
 # Utility command for ALIVE_autogen
 
-build ALIVE_autogen: phony CMakeFiles/ALIVE_autogen ALIVE_autogen/include/ui_homepage.h ALIVE_autogen/include/ui_rolepage.h ALIVE_autogen/include/ui_shoppage.h ALIVE_autogen/include/ui_gamepage.h ALIVE_autogen/include/ui_gamelosebox.h ALIVE_autogen/timestamp ALIVE_autogen/mocs_compilation.cpp ALIVE_autogen_timestamp_deps
+build ALIVE_autogen: phony CMakeFiles/ALIVE_autogen ALIVE_autogen/include/ui_homepage.h ALIVE_autogen/include/ui_rolepage.h ALIVE_autogen/include/ui_shoppage.h ALIVE_autogen/include/ui_gamepage.h ALIVE_autogen/include/ui_gamelosebox.h ALIVE_autogen/include/ui_buffpage.h ALIVE_autogen/timestamp ALIVE_autogen/mocs_compilation.cpp ALIVE_autogen_timestamp_deps
 
 
 #############################################
@@ -273,7 +281,7 @@ build ALIVE_autogen/timestamp ALIVE_autogen/mocs_compilation.cpp | ${cmake_ninja
 #############################################
 # Custom command for ALIVE_autogen\EWIEGA46WW\qrc_resourses.cpp
 
-build ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp | ${cmake_ninja_workdir}ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp: CUSTOM_COMMAND F$:/QTproj/ALIVE/resourses.qrc CMakeFiles/ALIVE_autogen.dir/AutoRcc_resourses_EWIEGA46WW_Info.json F$:/QTproj/ALIVE/pics/hpbuff.png F$:/QTproj/ALIVE/pics/coinbuff.png F$:/QTproj/ALIVE/pics/revivebuff.png F$:/QTproj/ALIVE/pics/atkUpBuff.png F$:/QTproj/ALIVE/pics/spdbuff.png F$:/QTproj/ALIVE/pics/atpbuff.png F$:/QTproj/ALIVE/pics/hamadryad.png F$:/QTproj/ALIVE/pics/gird.png F$:/QTproj/ALIVE/pics/swordsman.png F$:/QTproj/ALIVE/pics/homepage.png F$:/QTproj/ALIVE/pics/moveicon_1.png F$:/QTproj/ALIVE/pics/detailBtn.png F$:/QTproj/ALIVE/pics/background.png F$:/QTproj/ALIVE/pics/itemBack.png F$:/QTproj/ALIVE/pics/wizard.png F$:/QTproj/ALIVE/pics/pawnbloodbar_inner.png F$:/QTproj/ALIVE/pics/demon.png F$:/QTproj/ALIVE/pics/pawnbloodbar_outer.png F$:/QTproj/ALIVE/pics/mutated_demon.png F$:/QTproj/ALIVE/pics/edge.png F$:/QTproj/ALIVE/pics/bloodbar.png F$:/QTproj/ALIVE/pics/block.png F$:/QTproj/ALIVE/pics/magician.png F$:/QTproj/ALIVE/pics/shop.png F$:/QTproj/ALIVE/pics/exitBtn.png F$:/QTproj/ALIVE/pics/moveicon.png F$:/QTproj/ALIVE/pics/saveBtn.png F$:/QTproj/ALIVE/pics/gameBtn.png F$:/QTproj/ALIVE/pics/shopBtn.png F$:/Qt/6.5.3/mingw_64/./bin/rcc.exe F$:/Qt/6.5.3/mingw_64/./bin/rcc.exe || ALIVE_autogen ALIVE_autogen_timestamp_deps
+build ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp | ${cmake_ninja_workdir}ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp: CUSTOM_COMMAND F$:/QTproj/ALIVE/resourses.qrc CMakeFiles/ALIVE_autogen.dir/AutoRcc_resourses_EWIEGA46WW_Info.json F$:/QTproj/ALIVE/pics/hpbuff.png F$:/QTproj/ALIVE/pics/coinbuff.png F$:/QTproj/ALIVE/pics/revivebuff.png F$:/QTproj/ALIVE/pics/atkUpBuff.png F$:/QTproj/ALIVE/pics/spdbuff.png F$:/QTproj/ALIVE/pics/atpbuff.png F$:/QTproj/ALIVE/pics/hamadryad.png F$:/QTproj/ALIVE/pics/gird.png F$:/QTproj/ALIVE/pics/swordsman.png F$:/QTproj/ALIVE/pics/homepage.png F$:/QTproj/ALIVE/pics/moveicon_1.png F$:/QTproj/ALIVE/pics/detailBtn.png F$:/QTproj/ALIVE/pics/background.png F$:/QTproj/ALIVE/pics/itemBack.png F$:/QTproj/ALIVE/pics/wizard.png F$:/QTproj/ALIVE/pics/pawnbloodbar_inner.png F$:/QTproj/ALIVE/pics/demon.png F$:/QTproj/ALIVE/pics/pawnbloodbar_outer.png F$:/QTproj/ALIVE/pics/mutated_demon.png F$:/QTproj/ALIVE/pics/edge.png F$:/QTproj/ALIVE/pics/bloodbar.png F$:/QTproj/ALIVE/pics/block.png F$:/QTproj/ALIVE/pics/magician.png F$:/QTproj/ALIVE/pics/shop.png F$:/QTproj/ALIVE/pics/exitBtn.png F$:/QTproj/ALIVE/pics/moveicon.png F$:/QTproj/ALIVE/pics/saveBtn.png F$:/QTproj/ALIVE/pics/gameBtn.png F$:/QTproj/ALIVE/pics/shopBtn.png F$:/QTproj/ALIVE/pics/cthulu.png F$:/QTproj/ALIVE/pics/m_g.png F$:/QTproj/ALIVE/pics/dagon.png F$:/QTproj/ALIVE/pics/horrorhunter.png F$:/QTproj/ALIVE/pics/hastura.png F$:/QTproj/ALIVE/pics/shub.png F$:/QTproj/ALIVE/pics/buffpageBack.png F$:/Qt/6.5.3/mingw_64/./bin/rcc.exe F$:/Qt/6.5.3/mingw_64/./bin/rcc.exe || ALIVE_autogen ALIVE_autogen_timestamp_deps
   COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\QTproj\ALIVE\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug && F:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/ALIVE_autogen.dir/AutoRcc_resourses_EWIEGA46WW_Info.json Debug"
   DESC = Automatic RCC for resourses.qrc
   restat = 1
@@ -282,7 +290,7 @@ build ALIVE_autogen/EWIEGA46WW/qrc_resourses.cpp | ${cmake_ninja_workdir}ALIVE_a
 #############################################
 # Phony custom command for CMakeFiles\ALIVE_autogen
 
-build CMakeFiles/ALIVE_autogen ALIVE_autogen/include/ui_homepage.h ALIVE_autogen/include/ui_rolepage.h ALIVE_autogen/include/ui_shoppage.h ALIVE_autogen/include/ui_gamepage.h ALIVE_autogen/include/ui_gamelosebox.h | ${cmake_ninja_workdir}CMakeFiles/ALIVE_autogen ${cmake_ninja_workdir}ALIVE_autogen/include/ui_homepage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_rolepage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_shoppage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_gamepage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_gamelosebox.h: phony ALIVE_autogen/timestamp || ALIVE_autogen_timestamp_deps
+build CMakeFiles/ALIVE_autogen ALIVE_autogen/include/ui_homepage.h ALIVE_autogen/include/ui_rolepage.h ALIVE_autogen/include/ui_shoppage.h ALIVE_autogen/include/ui_gamepage.h ALIVE_autogen/include/ui_gamelosebox.h ALIVE_autogen/include/ui_buffpage.h | ${cmake_ninja_workdir}CMakeFiles/ALIVE_autogen ${cmake_ninja_workdir}ALIVE_autogen/include/ui_homepage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_rolepage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_shoppage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_gamepage.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_gamelosebox.h ${cmake_ninja_workdir}ALIVE_autogen/include/ui_buffpage.h: phony ALIVE_autogen/timestamp || ALIVE_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

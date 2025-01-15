@@ -98,7 +98,9 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     , pawn_widget(new PawnWidget(this, "Swordsman"))
     , move_icon(new MoveIcon(this))
     , pawnMoveTimer(new QTimer(this))
+    , buffpage(nullptr)
     , history(his)
+    , keyPressed(QList<bool>(256, false))
 {
     // setWindowFlag(Qt::FramelessWindowHint); // 边框隐藏
     setWindowFlags (windowFlags () | Qt::WindowStaysOnTopHint); // 将该页面置顶
@@ -121,7 +123,7 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     // connect(move_icon, &MoveIcon::iconReleased, this, &GamePage::iconReleasedEvent);
     connect(gamestate, &GameState::gameUpdate, this, &GamePage::gameUpdateAsked);
     connect(gamestate, &GameState::gameLose, this, &GamePage::gameEnd);
-    connect(pawnMoveTimer, &QTimer::timeout, this, &GamePage::pawnMove);
+    connect(gamestate, &GameState::pawnmoving, this, &GamePage::pawnMove);
 
     connect(gamestate, &GameState::levelup, this, &GamePage::buffPageOpen);
     pawnMoveTimer->start(1);
@@ -156,8 +158,10 @@ void GamePage::paintEvent(QPaintEvent *event)
 
 void GamePage::keyPressEvent(QKeyEvent *event)
 {
-    if (gamestate->getStatus() != Status::GAMEON)
+    if (gamestate->getStatus() != Status::GAMEON){
+        keyPressed.fill(false);
         event->ignore();
+    }
     else{
         keyPressed[event->key()] = true;
         // qDebug() << "key " << event->key() << " pressed";
@@ -167,8 +171,10 @@ void GamePage::keyPressEvent(QKeyEvent *event)
 
 void GamePage::keyReleaseEvent(QKeyEvent *event)
 {
-    if (gamestate->getStatus() != Status::GAMEON)
+    if (gamestate->getStatus() != Status::GAMEON){
+        keyPressed.fill(false);
         event->ignore();
+    }
     else{
         keyPressed[event->key()] = false;
         // qDebug() << "key " << event->key() << " pressed";
@@ -254,6 +260,19 @@ void GamePage::endExit()
 
 void GamePage::buffPageOpen()
 {
+    if(buffpage){
+        delete buffpage;
+        buffpage = nullptr;
+    }
+    buffpage = new BuffPage(this);
+    buffpage->setGeometry(64, 77, 991, 616);
+    connect(buffpage, &BuffPage::buffselection, this, &GamePage::buffsel);
+    buffpage->show();
+}
 
+void GamePage::buffsel(int buff)
+{
+    gamestate->setStatus(Status::GAMEON);
+    gamestate->gainBuff(buff);
 }
 

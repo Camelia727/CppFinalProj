@@ -255,6 +255,12 @@
 	[
 		[ "F:/QTproj/ALIVE/agents.h", "MU", "EWIEGA46WW/moc_agents.cpp", null ],
 		[
+			"F:/QTproj/ALIVE/buffpage.h",
+			"MU",
+			"EWIEGA46WW/moc_buffpage.cpp",
+			null
+		],
+		[
 			"F:/QTproj/ALIVE/gamelosebox.h",
 			"MU",
 			"EWIEGA46WW/moc_gamelosebox.cpp",
@@ -382,6 +388,7 @@
 	"SOURCES" : 
 	[
 		[ "F:/QTproj/ALIVE/agents.cpp", "MU", null ],
+		[ "F:/QTproj/ALIVE/buffpage.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/gamelosebox.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/gamepage.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/gamestate.cpp", "MU", null ],

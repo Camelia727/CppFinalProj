@@ -32,6 +32,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     , enemyAttackTimer(new QTimer(this))
     , enemyUpdateTimer(new QTimer(this))
     , pawnAttackTimer(new QTimer(this))
+    , pawnMoveTimer(new QTimer(this))
     , roundTimer(new QTimer(this))
 {
     Pawn = new class Pawn(his, RoleType::SWORDSMAN, this);
@@ -44,12 +45,14 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     connect(enemyMoveTimer, &QTimer::timeout, this, &GameState::GameUpdate);
     connect(enemyAttackTimer, &QTimer::timeout, this, &GameState::EnemyAttack);
     connect(pawnAttackTimer, &QTimer::timeout, this, &GameState::PawnAttack);
+    connect(pawnMoveTimer, &QTimer::timeout, this, &GameState::pawnMoving);
     // connect(enemyUpdateTimer, &QTimer::timeout, this, &GameState::EnemyUpdate);
 
     enemyMoveTimer->start(100);
     enemyAttackTimer->start(1000);
     enemyUpdateTimer->start(1500);
     pawnAttackTimer->start(800);
+    pawnMoveTimer->start(100);
     roundTimer->start(30000);
 
     //*******游戏状态の信号与槽*******
@@ -284,6 +287,57 @@ void GameState::EnemyDead(Enemy *enemy)
     Pawn->gainExp(5);
 }
 
+void GameState::gainBuff(int buff)
+{
+    Pawn->gainBuff(buff);
+}
+
+void GameState::setStatus(Status statu)
+{
+    switch (statu){
+    case Status::GAMEON:
+        if (status == Status::GAMETMP){
+            status = statu;
+            roundTimer->start(remainedtime);
+            enemyAttackTimer->start(1000);
+            enemyMoveTimer->start(100);
+            enemyUpdateTimer->start(1500);
+            pawnAttackTimer->start(800);
+            pawnMoveTimer->start(100);
+        }
+        break;
+    case Status::GAMEOFF:
+        if (status == Status::GAMEON){
+            qDebug() << "status change";
+            status = statu;
+            remainedtime = 30000;
+            roundTimer->setInterval(30000);
+            enemyAttackTimer->stop();
+            enemyMoveTimer->stop();
+            enemyUpdateTimer->stop();
+            pawnAttackTimer->stop();
+            pawnMoveTimer->stop();
+        }
+        break;
+    case Status::GAMETMP:
+        if (status == Status::GAMEON){
+            qDebug() << "status change";
+            status = statu;
+            remainedtime = roundTimer->remainingTime();
+            enemyAttackTimer->stop();
+            enemyMoveTimer->stop();
+            enemyAttackTimer->stop();
+            pawnAttackTimer->stop();
+            pawnMoveTimer->stop();
+        }
+        break;
+    case Status::GAMEWIN:
+        break;
+    case Status::GAMELOSE:
+        break;
+    }
+}
+
 void GameState::GameUpdate()
 {
     for (Enemy* enemy : EnemyList){
@@ -333,40 +387,19 @@ void GameState::PawnAttack()
 
 void GameState::PawnLevelUp()
 {
+    setStatus(Status::GAMETMP);
     emit levelup();
 }
 
 void GameState::GameLose()
 {
-    GameStateChange(Status::GAMELOSE);
+    setStatus(Status::GAMELOSE);
     emit gameLose();
 }
 
 void GameState::GameStateChange(Status nxt_status)
 {
-    status = nxt_status;
-    switch (nxt_status){
-    case Status::GAMEON:
-
-        break;
-    case Status::GAMETMP:
-
-        break;
-    case Status::GAMEWIN:
-
-        break;
-    case Status::GAMELOSE:
-        roundTimer->stop();
-        enemyUpdateTimer->stop();
-        enemyMoveTimer->stop();
-        enemyAttackTimer->stop();
-        pawnAttackTimer->stop();
-        break;
-    case Status::GAMEOFF:
-        break;
-    default:
-        break;
-    }
+    setStatus(nxt_status);
 }
 
 
@@ -461,6 +494,7 @@ FallingObject::FallingObject(QWidget *parent, int t)
 
 Pawn::Pawn(History* his, RoleType type, QObject* parent)
     : bleeding(false)
+    , crit(false)
     , dead(false)
     , history(his)
     , revive(0)
@@ -474,7 +508,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
         max_hp = 100.0;
         atk = 10.0;
         atp = 1.0;
-        spd = 1.0;
+        spd = 10.0;
         picking_range = 2;
         attack_range = 10;
         pic.load(":/pics/pics/swordsman.png");
@@ -483,7 +517,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
         max_hp = 700.0;
         atk = 15.0;
         atp = 1.0;
-        spd = 1.0;
+        spd = 10.0;
         picking_range = 4;
         attack_range = 5;
         pic.load(":/pics/pics/magician.png");
@@ -513,6 +547,43 @@ void Pawn::beHurt(double dmg)
     }
     else
         hp -= dmg;
+}
+
+void Pawn::attack(Enemy *enemy)
+{
+    int hurt = atk;
+    if (crit){
+        if (QRandomGenerator::global()->bounded(100) < 15)
+            hurt *= 2;
+    }
+    enemy->getHurt(hurt);
+}
+
+void Pawn::gainBuff(int buff)
+{
+    qDebug() << "gain buff " << buff;
+    switch (buff){
+    case 0:
+        atk *= 1.15;
+        break;
+    case 1:
+        atp *= 1.15;
+        break;
+    case 2:
+        revive++;
+        break;
+    case 3:
+        crit = true;
+        break;
+    case 4:
+        spd *= 1.15;
+        break;
+    case 5:
+        coin *= 1.15;
+        break;
+    default:
+        break;
+    }
 }
 
 

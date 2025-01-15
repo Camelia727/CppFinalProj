@@ -37,7 +37,14 @@
 		"F:/QTproj/ALIVE/pics/moveicon.png",
 		"F:/QTproj/ALIVE/pics/saveBtn.png",
 		"F:/QTproj/ALIVE/pics/gameBtn.png",
-		"F:/QTproj/ALIVE/pics/shopBtn.png"
+		"F:/QTproj/ALIVE/pics/shopBtn.png",
+		"F:/QTproj/ALIVE/pics/cthulu.png",
+		"F:/QTproj/ALIVE/pics/m_g.png",
+		"F:/QTproj/ALIVE/pics/dagon.png",
+		"F:/QTproj/ALIVE/pics/horrorhunter.png",
+		"F:/QTproj/ALIVE/pics/hastura.png",
+		"F:/QTproj/ALIVE/pics/shub.png",
+		"F:/QTproj/ALIVE/pics/buffpageBack.png"
 	],
 	"LOCK_FILE" : "F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/ALIVE_autogen.dir/AutoRcc_resourses_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

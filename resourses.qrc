@@ -32,4 +32,13 @@
         <file>pics/revivebuff.png</file>
         <file>pics/spdbuff.png</file>
     </qresource>
+    <qresource prefix="/gods">
+        <file>pics/buffpageBack.png</file>
+        <file>pics/cthulu.png</file>
+        <file>pics/dagon.png</file>
+        <file>pics/hastura.png</file>
+        <file>pics/horrorhunter.png</file>
+        <file>pics/m_g.png</file>
+        <file>pics/shub.png</file>
+    </qresource>
 </RCC>
