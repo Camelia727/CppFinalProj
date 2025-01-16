@@ -6,7 +6,7 @@ RolePage::RolePage(QWidget *parent)
     , ui(new Ui::RolePage)
 {
     ui->setupUi(this);
-    setFixedSize(QSize(600, 400));
+    setFixedSize(QSize(1000,600));
     setWindowFlag(Qt::FramelessWindowHint);
     setWindowFlags (windowFlags () | Qt::WindowStaysOnTopHint); // 将该页面置顶
 

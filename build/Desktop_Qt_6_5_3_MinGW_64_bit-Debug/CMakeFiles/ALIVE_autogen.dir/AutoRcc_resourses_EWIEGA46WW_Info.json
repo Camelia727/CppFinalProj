@@ -9,6 +9,8 @@
 	"INCLUDE_DIR" : "F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/include",
 	"INPUTS" : 
 	[
+		"F:/QTproj/ALIVE/pics/gameWinPic.png",
+		"F:/QTproj/ALIVE/pics/gameLosePic.png",
 		"F:/QTproj/ALIVE/pics/hpbuff.png",
 		"F:/QTproj/ALIVE/pics/coinbuff.png",
 		"F:/QTproj/ALIVE/pics/revivebuff.png",

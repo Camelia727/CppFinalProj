@@ -181,6 +181,7 @@ signals:
     void levelup();
     void pawnmoving();
     void gameUpdate();
+    void gameWin();
     void gameLose();
 
 public slots:
@@ -190,6 +191,7 @@ public slots:
     void PawnAttack();
     void PawnLevelUp();
     void pawnMoving() {emit pawnmoving();}
+    void GameWin();
     void GameLose();
     void GameStateChange(Status nxt_status);
 };

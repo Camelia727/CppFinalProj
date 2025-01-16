@@ -1,6 +1,5 @@
 F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46WW/moc_gamelosebox.cpp: F:/QTproj/ALIVE/gamelosebox.h \
   F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/moc_predefs.h \
-  F:/QTproj/ALIVE/mybutton.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qalgorithms.h \

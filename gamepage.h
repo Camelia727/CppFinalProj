@@ -9,6 +9,7 @@
 #include "gamelosebox.h"
 #include "history.h"
 #include "buffpage.h"
+#include "gamepausepage.h"
 
 namespace Ui {
 class GamePage;
@@ -77,6 +78,7 @@ private:
     History* history;
     GameState* gamestate;
     BuffPage* buffpage;
+    GamePausePage* pausepage;
     GameMap map;
     PawnWidget* pawn_widget;
     MoveIcon* move_icon;
@@ -103,12 +105,14 @@ public slots:
 
     void pawnMove();                // 人物移动
     void gameUpdateAsked();         // 更新游戏画面
+    void gameWin();                 // 活到最后，播放胜利cg
     void gameEnd();                 // 人物死亡，播放战败结算
     void endHome();                 // 结束本场游戏并回到home
-    void endExit();                 // 结束本场游戏并直接退出
 
     void buffPageOpen();            // 游戏角色升级后，选择buff
     void buffsel(int buff);         // 选好buff传给gamestate
+
+    void pausegoon() {gamestate->setStatus(Status::GAMEON);}
 };
 
 #endif // GAMEPAGE_H

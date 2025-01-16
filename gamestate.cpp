@@ -1,4 +1,5 @@
 #include "gamestate.h"
+#include <queue>
 
 
 GameMap::GameMap()
@@ -47,6 +48,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     connect(pawnAttackTimer, &QTimer::timeout, this, &GameState::PawnAttack);
     connect(pawnMoveTimer, &QTimer::timeout, this, &GameState::pawnMoving);
     connect(enemyUpdateTimer, &QTimer::timeout, this, &GameState::EnemyUpdate);
+    connect(roundTimer, &QTimer::timeout, this, &GameState::GameWin);
 
     enemyMoveTimer->start(100);
     enemyAttackTimer->start(1000);
@@ -85,7 +87,7 @@ GameState::~GameState()
 
 int GameState::getRounds() const
 {
-    return rounds;
+    return (30000 - roundTimer->remainingTime())/1000;
 }
 
 int GameState::getCoins() const
@@ -171,44 +173,80 @@ QList<Enemy*> GameState::getEnemyList() const
 
 QPointF GameState::EnemyDirection(Enemy *enemy)
 {
-    QPointF direction = PawnPos - enemy->getPos();
-    // qDebug() << "one direction : " << direction.x() << "," << direction.y();
-    double v = direction.x() * direction.x() + direction.y() * direction.y();
-    direction.rx() /= std::sqrt(v);
-    direction.ry() /= std::sqrt(v);
-    // qDebug() << "initial direction : " << direction.x() << "," << direction.y();
+    const QVector<QPoint> directions = {
+        QPoint(0, -1), QPoint(1, -1), QPoint(1, 0), QPoint(1, 1),
+        QPoint(0, 1), QPoint(-1, 1), QPoint(-1, 0), QPoint(-1, -1)
+    };
+    QPoint enemyPos = enemy->getPos().toPoint();
+    QPoint pawnPos = PawnPos.toPoint();
 
-    bool collision = false;
-    QRectF newEnemyRect(enemy->getPos() + direction * enemy->getSpd(), QSizeF(0.5,0.5));
-    if (newEnemyRect.left() < 90 ||
-        newEnemyRect.right() > 90+Map.getSize().width() ||
-        newEnemyRect.top() < 110 ||
-        newEnemyRect.bottom() > 110+Map.getSize().height()
-        )
-        collision = true;
-    for (const QPoint& b : Map.get_blocks()){
-        if (newEnemyRect.intersects(QRectF(b, QSizeF(50,50)))){
-            collision = true;
+    // 存储所有障碍物的左上坐标，需要转换为矩形区域
+    QSet<QPoint> blockSet;
+    for (const QPoint &block : Map.get_blocks()) {
+        for (int x = block.x(); x < block.x() + 50; ++x) {
+            for (int y = block.y(); y < block.y() + 50; ++y) {
+                blockSet.insert(QPoint(x, y));
+            }
         }
     }
-    if (!collision)
-        return direction;
-    else{
-        QPointF offset(direction.y(), -direction.x());
-        QPointF newPos1 = enemy->getPos() + offset;
-        QPointF newPos2 = enemy->getPos() - offset;
-        bool isPos1Clear = true;
-        bool isPos2Clear = true;
-        for (const QPoint& b : Map.get_blocks()) {
-            QRectF checkRect1(newPos1, QSizeF(0.5, 0.5));
-            QRectF checkRect2(newPos2, QSizeF(0.5, 0.5));
-            if (checkRect1.intersects(QRectF(b, QSizeF(50,50)))) isPos1Clear = false;
-            if (checkRect2.intersects(QRectF(b, QSizeF(50,50)))) isPos2Clear = false;
+
+    // 定义节点结构
+    struct Node {
+        QPoint position;
+        int gCost; // 从起点到当前节点的代价
+        int hCost; // 启发式估计代价
+        QPoint parent; // 父节点位置
+
+        bool operator>(const Node &other) const {
+            return gCost + hCost > other.gCost + other.hCost;
         }
-        if (isPos1Clear) return offset;
-        else if(isPos2Clear) return -offset;
-        else return -offset;
+    };
+    auto heuristic = [](const QPoint &a, const QPoint &b) -> int{
+        return std::abs(a.x() - b.x()) + std::abs(a.y() - b.y());
+    };
+
+    // 优先队列（最小堆）
+    std::priority_queue<Node, QVector<Node>, std::greater<Node>> openSet;
+    QSet<QPoint> closedSet;
+
+    // 初始化起点
+    Node startNode{enemyPos, 0, heuristic(enemyPos, pawnPos), QPoint()};
+    openSet.push(startNode);
+
+    while (!openSet.empty()) {
+        Node currentNode = openSet.top();
+        openSet.pop();
+
+        if (currentNode.position == pawnPos) {
+            // 找到路径，回溯到起点
+            QPoint direction = currentNode.position - (currentNode.parent.isNull() ? enemyPos : currentNode.parent);
+            return QPointF(direction.x(), direction.y());
+        }
+
+        closedSet.insert(currentNode.position);
+
+        // 生成邻居节点
+        for (const QPoint &direction : directions) {
+            QPoint neighborPos = currentNode.position + direction;
+
+            if (blockSet.contains(neighborPos) || neighborPos.x() < 0 || neighborPos.y() < 0 ||
+                neighborPos.x() >= 1040 || neighborPos.y() >= 710) {
+                continue; // 跳过障碍物和地图边界外的位置
+            }
+
+            if (closedSet.contains(neighborPos)) {
+                continue; // 跳过已访问的节点
+            }
+
+            int tentativeGCost = currentNode.gCost + 1; // 假设每个方向移动代价为1
+            int hCost = heuristic(neighborPos, pawnPos);
+            Node neighborNode{neighborPos, tentativeGCost, hCost, currentNode.position};
+            openSet.push(neighborNode);
+        }
     }
+
+    // 如果没有找到路径，返回原点（或某种默认方向）
+    return QPointF(0, 0);
 
 }
 
@@ -331,9 +369,7 @@ void GameState::setStatus(Status statu)
             pawnMoveTimer->stop();
         }
         break;
-    case Status::GAMEWIN:
-        break;
-    case Status::GAMELOSE:
+    default:
         break;
     }
 }
@@ -391,9 +427,15 @@ void GameState::PawnLevelUp()
     emit levelup();
 }
 
+void GameState::GameWin()
+{
+    setStatus(Status::GAMEOFF);
+    emit gameWin();
+}
+
 void GameState::GameLose()
 {
-    setStatus(Status::GAMELOSE);
+    setStatus(Status::GAMEOFF);
     emit gameLose();
 }
 

@@ -2,11 +2,12 @@
 #define GAMELOSEBOX_H
 
 #include <QWidget>
-#include "mybutton.h"
+#include <QPainter>
 
 namespace Ui {
 class GameLoseBox;
 }
+
 
 class GameLoseBox : public QWidget
 {
@@ -25,11 +26,9 @@ protected:
 
 signals:
     void home_clicked();
-    void exit_clicked();
 
 public slots:
     void Home();
-    void Exit();
 };
 
 #endif // GAMELOSEBOX_H

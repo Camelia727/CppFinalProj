@@ -3,9 +3,9 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46
   F:/QTproj/ALIVE/agents.h \
   F:/QTproj/ALIVE/buffpage.h \
   F:/QTproj/ALIVE/gamelosebox.h \
+  F:/QTproj/ALIVE/gamepausepage.h \
   F:/QTproj/ALIVE/gamestate.h \
   F:/QTproj/ALIVE/history.h \
-  F:/QTproj/ALIVE/mybutton.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
   F:/Qt/6.5.3/mingw_64/include/QtCore/QList \
   F:/Qt/6.5.3/mingw_64/include/QtCore/QObject \

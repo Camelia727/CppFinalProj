@@ -227,16 +227,17 @@ static constexpr auto qt_meta_stringdata_CLASSGamePageENDCLASS = QtMocHelpers::s
     "iconMoveEvent",
     "pawnMove",
     "gameUpdateAsked",
+    "gameWin",
     "gameEnd",
     "endHome",
-    "endExit",
     "buffPageOpen",
     "buffsel",
-    "buff"
+    "buff",
+    "pausegoon"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSGamePageENDCLASS_t {
-    uint offsetsAndSizes[36];
+    uint offsetsAndSizes[38];
     char stringdata0[9];
     char stringdata1[8];
     char stringdata2[1];
@@ -255,6 +256,7 @@ struct qt_meta_stringdata_CLASSGamePageENDCLASS_t {
     char stringdata15[13];
     char stringdata16[8];
     char stringdata17[5];
+    char stringdata18[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSGamePageENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -272,12 +274,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGamePageENDCLASS_t qt_meta_stri
         QT_MOC_LITERAL(76, 13),  // "iconMoveEvent"
         QT_MOC_LITERAL(90, 8),  // "pawnMove"
         QT_MOC_LITERAL(99, 15),  // "gameUpdateAsked"
-        QT_MOC_LITERAL(115, 7),  // "gameEnd"
-        QT_MOC_LITERAL(123, 7),  // "endHome"
-        QT_MOC_LITERAL(131, 7),  // "endExit"
+        QT_MOC_LITERAL(115, 7),  // "gameWin"
+        QT_MOC_LITERAL(123, 7),  // "gameEnd"
+        QT_MOC_LITERAL(131, 7),  // "endHome"
         QT_MOC_LITERAL(139, 12),  // "buffPageOpen"
         QT_MOC_LITERAL(152, 7),  // "buffsel"
-        QT_MOC_LITERAL(160, 4)   // "buff"
+        QT_MOC_LITERAL(160, 4),  // "buff"
+        QT_MOC_LITERAL(165, 9)   // "pausegoon"
     },
     "GamePage",
     "gameend",
@@ -291,12 +294,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGamePageENDCLASS_t qt_meta_stri
     "iconMoveEvent",
     "pawnMove",
     "gameUpdateAsked",
+    "gameWin",
     "gameEnd",
     "endHome",
-    "endExit",
     "buffPageOpen",
     "buffsel",
-    "buff"
+    "buff",
+    "pausegoon"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -308,7 +312,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGamePageENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -316,21 +320,22 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGamePageENDCLASS[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   92,    2, 0x06,    1 /* Public */,
-       4,    1,   95,    2, 0x06,    3 /* Public */,
-       5,    0,   98,    2, 0x06,    5 /* Public */,
+       1,    1,   98,    2, 0x06,    1 /* Public */,
+       4,    1,  101,    2, 0x06,    3 /* Public */,
+       5,    0,  104,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       6,    1,   99,    2, 0x0a,    6 /* Public */,
-       8,    0,  102,    2, 0x0a,    8 /* Public */,
-       9,    1,  103,    2, 0x0a,    9 /* Public */,
-      10,    0,  106,    2, 0x0a,   11 /* Public */,
-      11,    0,  107,    2, 0x0a,   12 /* Public */,
-      12,    0,  108,    2, 0x0a,   13 /* Public */,
-      13,    0,  109,    2, 0x0a,   14 /* Public */,
-      14,    0,  110,    2, 0x0a,   15 /* Public */,
-      15,    0,  111,    2, 0x0a,   16 /* Public */,
-      16,    1,  112,    2, 0x0a,   17 /* Public */,
+       6,    1,  105,    2, 0x0a,    6 /* Public */,
+       8,    0,  108,    2, 0x0a,    8 /* Public */,
+       9,    1,  109,    2, 0x0a,    9 /* Public */,
+      10,    0,  112,    2, 0x0a,   11 /* Public */,
+      11,    0,  113,    2, 0x0a,   12 /* Public */,
+      12,    0,  114,    2, 0x0a,   13 /* Public */,
+      13,    0,  115,    2, 0x0a,   14 /* Public */,
+      14,    0,  116,    2, 0x0a,   15 /* Public */,
+      15,    0,  117,    2, 0x0a,   16 /* Public */,
+      16,    1,  118,    2, 0x0a,   17 /* Public */,
+      18,    0,  121,    2, 0x0a,   19 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -348,6 +353,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGamePageENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -381,17 +387,19 @@ Q_CONSTINIT const QMetaObject GamePage::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'gameUpdateAsked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'gameWin'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'gameEnd'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'endHome'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'endExit'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'buffPageOpen'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'buffsel'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'pausegoon'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -410,11 +418,12 @@ void GamePage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 5: _t->iconMoveEvent((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
         case 6: _t->pawnMove(); break;
         case 7: _t->gameUpdateAsked(); break;
-        case 8: _t->gameEnd(); break;
-        case 9: _t->endHome(); break;
-        case 10: _t->endExit(); break;
+        case 8: _t->gameWin(); break;
+        case 9: _t->gameEnd(); break;
+        case 10: _t->endHome(); break;
         case 11: _t->buffPageOpen(); break;
         case 12: _t->buffsel((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 13: _t->pausegoon(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -462,13 +471,13 @@ int GamePage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 14)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }

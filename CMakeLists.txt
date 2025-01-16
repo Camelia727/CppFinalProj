@@ -41,6 +41,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         history.h history.cpp
         gamelosebox.h gamelosebox.cpp gamelosebox.ui
         buffpage.h buffpage.cpp buffpage.ui
+        gamepausepage.h gamepausepage.cpp gamepausepage.ui
+        gamewinbox.h gamewinbox.cpp gamewinbox.ui
 
 
 

@@ -273,9 +273,21 @@
 			null
 		],
 		[
+			"F:/QTproj/ALIVE/gamepausepage.h",
+			"MU",
+			"EWIEGA46WW/moc_gamepausepage.cpp",
+			null
+		],
+		[
 			"F:/QTproj/ALIVE/gamestate.h",
 			"MU",
 			"EWIEGA46WW/moc_gamestate.cpp",
+			null
+		],
+		[
+			"F:/QTproj/ALIVE/gamewinbox.h",
+			"MU",
+			"EWIEGA46WW/moc_gamewinbox.cpp",
 			null
 		],
 		[ "F:/QTproj/ALIVE/history.h", "MU", "EWIEGA46WW/moc_history.cpp", null ],
@@ -391,7 +403,9 @@
 		[ "F:/QTproj/ALIVE/buffpage.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/gamelosebox.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/gamepage.cpp", "MU", null ],
+		[ "F:/QTproj/ALIVE/gamepausepage.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/gamestate.cpp", "MU", null ],
+		[ "F:/QTproj/ALIVE/gamewinbox.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/history.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/homepage.cpp", "MU", null ],
 		[ "F:/QTproj/ALIVE/main.cpp", "MU", null ],

@@ -13,8 +13,12 @@ ALIVE_autogen/timestamp: \
 	F:/QTproj/ALIVE/gamelosebox.h \
 	F:/QTproj/ALIVE/gamepage.cpp \
 	F:/QTproj/ALIVE/gamepage.h \
+	F:/QTproj/ALIVE/gamepausepage.cpp \
+	F:/QTproj/ALIVE/gamepausepage.h \
 	F:/QTproj/ALIVE/gamestate.cpp \
 	F:/QTproj/ALIVE/gamestate.h \
+	F:/QTproj/ALIVE/gamewinbox.cpp \
+	F:/QTproj/ALIVE/gamewinbox.h \
 	F:/QTproj/ALIVE/history.cpp \
 	F:/QTproj/ALIVE/history.h \
 	F:/QTproj/ALIVE/homepage.cpp \
@@ -597,6 +601,8 @@ ALIVE_autogen/timestamp: \
 	F:/QTproj/ALIVE/buffpage.ui \
 	F:/QTproj/ALIVE/gamelosebox.ui \
 	F:/QTproj/ALIVE/gamepage.ui \
+	F:/QTproj/ALIVE/gamepausepage.ui \
+	F:/QTproj/ALIVE/gamewinbox.ui \
 	F:/QTproj/ALIVE/homepage.ui \
 	F:/QTproj/ALIVE/rolepage.ui \
 	F:/QTproj/ALIVE/shoppage.ui \

@@ -7,9 +7,9 @@ GameLoseBox::GameLoseBox(QWidget *parent)
 {
     ui->setupUi(this);
     setFixedSize(400,300);
+    background.load(":/winorlose/pics/gameLosePic.png");
 
     connect(ui->home, &QPushButton::clicked, this, &GameLoseBox::Home);
-    connect(ui->exit, &QPushButton::clicked, this, &GameLoseBox::Exit);
 }
 
 GameLoseBox::~GameLoseBox()
@@ -21,15 +21,11 @@ GameLoseBox::~GameLoseBox()
 
 void GameLoseBox::paintEvent(QPaintEvent *event)
 {
-
+    QPainter painter(this);
+    painter.drawPixmap(QRect(85,50,230,170), background);
 }
 
 void GameLoseBox::Home()
 {
     emit home_clicked();
-}
-
-void GameLoseBox::Exit()
-{
-    emit exit_clicked();
 }

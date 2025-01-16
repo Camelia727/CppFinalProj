@@ -20,7 +20,6 @@ class Ui_GameLoseBox
 {
 public:
     QPushButton *home;
-    QPushButton *exit;
 
     void setupUi(QWidget *GameLoseBox)
     {
@@ -29,10 +28,7 @@ public:
         GameLoseBox->resize(400, 300);
         home = new QPushButton(GameLoseBox);
         home->setObjectName("home");
-        home->setGeometry(QRect(40, 220, 93, 28));
-        exit = new QPushButton(GameLoseBox);
-        exit->setObjectName("exit");
-        exit->setGeometry(QRect(230, 220, 93, 28));
+        home->setGeometry(QRect(150, 240, 93, 28));
 
         retranslateUi(GameLoseBox);
 
@@ -43,7 +39,6 @@ public:
     {
         GameLoseBox->setWindowTitle(QCoreApplication::translate("GameLoseBox", "Form", nullptr));
         home->setText(QCoreApplication::translate("GameLoseBox", "home", nullptr));
-        exit->setText(QCoreApplication::translate("GameLoseBox", "exit", nullptr));
     } // retranslateUi
 
 };

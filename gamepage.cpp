@@ -1,4 +1,5 @@
 #include "gamepage.h"
+#include "gamewinbox.h"
 #include "ui_gamepage.h"
 
 #define GRIDSIZE 50
@@ -99,11 +100,12 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     , move_icon(new MoveIcon(this))
     , pawnMoveTimer(new QTimer(this))
     , buffpage(nullptr)
+    , pausepage(nullptr)
     , history(his)
     , keyPressed(QList<bool>(256, false))
 {
     // setWindowFlag(Qt::FramelessWindowHint); // 边框隐藏
-    setWindowFlags (windowFlags () | Qt::WindowStaysOnTopHint); // 将该页面置顶
+    // setWindowFlags (windowFlags () | Qt::WindowStaysOnTopHint); // 将该页面置顶
     setFixedSize(1120,760);
 
     ui->setupUi(this);
@@ -122,10 +124,12 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     // connect(move_icon, &MoveIcon::iconPressed, this, &GamePage::iconPressEvent);
     // connect(move_icon, &MoveIcon::iconReleased, this, &GamePage::iconReleasedEvent);
     connect(gamestate, &GameState::gameUpdate, this, &GamePage::gameUpdateAsked);
+    connect(gamestate, &GameState::gameWin, this, &GamePage::gameWin);
     connect(gamestate, &GameState::gameLose, this, &GamePage::gameEnd);
     connect(gamestate, &GameState::pawnmoving, this, &GamePage::pawnMove);
 
     connect(gamestate, &GameState::levelup, this, &GamePage::buffPageOpen);
+
     pawnMoveTimer->start(1);
 
     qDebug() << "gamepage init";
@@ -161,6 +165,14 @@ void GamePage::keyPressEvent(QKeyEvent *event)
     if (gamestate->getStatus() != Status::GAMEON){
         keyPressed.fill(false);
         event->ignore();
+    }
+    else if (event->key() == Qt::Key_Escape){
+        gamestate->setStatus(Status::GAMETMP);
+        pausepage = new GamePausePage(this);
+        pausepage->setGeometry(360,200,400,300);
+        pausepage->setWindowFlag(Qt::FramelessWindowHint);
+        connect(pausepage, &GamePausePage::goon, this, &GamePage::pausegoon);
+        pausepage->show();
     }
     else{
         keyPressed[event->key()] = true;
@@ -233,28 +245,28 @@ void GamePage::gameUpdateAsked()
     update();
 }
 
+void GamePage::gameWin()
+{
+    qDebug() << "game end";
+    update();
+    GameWinBox* losebox = new GameWinBox(this);
+    losebox->setGeometry(360,200,400,300);
+    connect(losebox, &GameWinBox::home_clicked, this, &GamePage::endHome);
+    losebox->show();
+}
+
 void GamePage::gameEnd()
 {
     qDebug() << "game end";
     update();
-    GameLoseBox* losebox = new GameLoseBox;
+    GameLoseBox* losebox = new GameLoseBox(this);
+    losebox->setGeometry(360,200,400,300);
     connect(losebox, &GameLoseBox::home_clicked, this, &GamePage::endHome);
-    connect(losebox, &GameLoseBox::exit_clicked, this, &GamePage::endExit);
+    losebox->show();
 }
 
 void GamePage::endHome()
 {
-    int rounds = gamestate->getRounds();
-    delete gamestate;
-    emit gameend(rounds);
-    close();
-}
-
-void GamePage::endExit()
-{
-    int rounds = gamestate->getRounds();
-    delete gamestate;
-    emit gameexit(rounds);
     close();
 }
 

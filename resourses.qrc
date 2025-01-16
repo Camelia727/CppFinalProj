@@ -41,4 +41,8 @@
         <file>pics/m_g.png</file>
         <file>pics/shub.png</file>
     </qresource>
+    <qresource prefix="/winorlose">
+        <file>pics/gameLosePic.png</file>
+        <file>pics/gameWinPic.png</file>
+    </qresource>
 </RCC>

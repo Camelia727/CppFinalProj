@@ -270,6 +270,7 @@ static constexpr auto qt_meta_stringdata_CLASSGameStateENDCLASS = QtMocHelpers::
     "",
     "pawnmoving",
     "gameUpdate",
+    "gameWin",
     "gameLose",
     "GameUpdate",
     "EnemyAttack",
@@ -277,6 +278,7 @@ static constexpr auto qt_meta_stringdata_CLASSGameStateENDCLASS = QtMocHelpers::
     "PawnAttack",
     "PawnLevelUp",
     "pawnMoving",
+    "GameWin",
     "GameLose",
     "GameStateChange",
     "Status",
@@ -284,23 +286,25 @@ static constexpr auto qt_meta_stringdata_CLASSGameStateENDCLASS = QtMocHelpers::
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSGameStateENDCLASS_t {
-    uint offsetsAndSizes[32];
+    uint offsetsAndSizes[36];
     char stringdata0[10];
     char stringdata1[8];
     char stringdata2[1];
     char stringdata3[11];
     char stringdata4[11];
-    char stringdata5[9];
-    char stringdata6[11];
-    char stringdata7[12];
+    char stringdata5[8];
+    char stringdata6[9];
+    char stringdata7[11];
     char stringdata8[12];
-    char stringdata9[11];
-    char stringdata10[12];
-    char stringdata11[11];
-    char stringdata12[9];
-    char stringdata13[16];
-    char stringdata14[7];
-    char stringdata15[11];
+    char stringdata9[12];
+    char stringdata10[11];
+    char stringdata11[12];
+    char stringdata12[11];
+    char stringdata13[8];
+    char stringdata14[9];
+    char stringdata15[16];
+    char stringdata16[7];
+    char stringdata17[11];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSGameStateENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -311,23 +315,26 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGameStateENDCLASS_t qt_meta_str
         QT_MOC_LITERAL(18, 0),  // ""
         QT_MOC_LITERAL(19, 10),  // "pawnmoving"
         QT_MOC_LITERAL(30, 10),  // "gameUpdate"
-        QT_MOC_LITERAL(41, 8),  // "gameLose"
-        QT_MOC_LITERAL(50, 10),  // "GameUpdate"
-        QT_MOC_LITERAL(61, 11),  // "EnemyAttack"
-        QT_MOC_LITERAL(73, 11),  // "EnemyUpdate"
-        QT_MOC_LITERAL(85, 10),  // "PawnAttack"
-        QT_MOC_LITERAL(96, 11),  // "PawnLevelUp"
-        QT_MOC_LITERAL(108, 10),  // "pawnMoving"
-        QT_MOC_LITERAL(119, 8),  // "GameLose"
-        QT_MOC_LITERAL(128, 15),  // "GameStateChange"
-        QT_MOC_LITERAL(144, 6),  // "Status"
-        QT_MOC_LITERAL(151, 10)   // "nxt_status"
+        QT_MOC_LITERAL(41, 7),  // "gameWin"
+        QT_MOC_LITERAL(49, 8),  // "gameLose"
+        QT_MOC_LITERAL(58, 10),  // "GameUpdate"
+        QT_MOC_LITERAL(69, 11),  // "EnemyAttack"
+        QT_MOC_LITERAL(81, 11),  // "EnemyUpdate"
+        QT_MOC_LITERAL(93, 10),  // "PawnAttack"
+        QT_MOC_LITERAL(104, 11),  // "PawnLevelUp"
+        QT_MOC_LITERAL(116, 10),  // "pawnMoving"
+        QT_MOC_LITERAL(127, 7),  // "GameWin"
+        QT_MOC_LITERAL(135, 8),  // "GameLose"
+        QT_MOC_LITERAL(144, 15),  // "GameStateChange"
+        QT_MOC_LITERAL(160, 6),  // "Status"
+        QT_MOC_LITERAL(167, 10)   // "nxt_status"
     },
     "GameState",
     "levelup",
     "",
     "pawnmoving",
     "gameUpdate",
+    "gameWin",
     "gameLose",
     "GameUpdate",
     "EnemyAttack",
@@ -335,6 +342,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGameStateENDCLASS_t qt_meta_str
     "PawnAttack",
     "PawnLevelUp",
     "pawnMoving",
+    "GameWin",
     "GameLose",
     "GameStateChange",
     "Status",
@@ -350,30 +358,33 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGameStateENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       4,       // signalCount
+       5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   86,    2, 0x06,    1 /* Public */,
-       3,    0,   87,    2, 0x06,    2 /* Public */,
-       4,    0,   88,    2, 0x06,    3 /* Public */,
-       5,    0,   89,    2, 0x06,    4 /* Public */,
+       1,    0,   98,    2, 0x06,    1 /* Public */,
+       3,    0,   99,    2, 0x06,    2 /* Public */,
+       4,    0,  100,    2, 0x06,    3 /* Public */,
+       5,    0,  101,    2, 0x06,    4 /* Public */,
+       6,    0,  102,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       6,    0,   90,    2, 0x0a,    5 /* Public */,
-       7,    0,   91,    2, 0x0a,    6 /* Public */,
-       8,    0,   92,    2, 0x0a,    7 /* Public */,
-       9,    0,   93,    2, 0x0a,    8 /* Public */,
-      10,    0,   94,    2, 0x0a,    9 /* Public */,
-      11,    0,   95,    2, 0x0a,   10 /* Public */,
-      12,    0,   96,    2, 0x0a,   11 /* Public */,
-      13,    1,   97,    2, 0x0a,   12 /* Public */,
+       7,    0,  103,    2, 0x0a,    6 /* Public */,
+       8,    0,  104,    2, 0x0a,    7 /* Public */,
+       9,    0,  105,    2, 0x0a,    8 /* Public */,
+      10,    0,  106,    2, 0x0a,    9 /* Public */,
+      11,    0,  107,    2, 0x0a,   10 /* Public */,
+      12,    0,  108,    2, 0x0a,   11 /* Public */,
+      13,    0,  109,    2, 0x0a,   12 /* Public */,
+      14,    0,  110,    2, 0x0a,   13 /* Public */,
+      15,    1,  111,    2, 0x0a,   14 /* Public */,
 
  // signals: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -387,7 +398,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGameStateENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 14,   15,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 16,   17,
 
        0        // eod
 };
@@ -407,6 +419,8 @@ Q_CONSTINIT const QMetaObject GameState::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'gameUpdate'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'gameWin'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'gameLose'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'GameUpdate'
@@ -420,6 +434,8 @@ Q_CONSTINIT const QMetaObject GameState::staticMetaObject = { {
         // method 'PawnLevelUp'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'pawnMoving'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'GameWin'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'GameLose'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -439,15 +455,17 @@ void GameState::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 0: _t->levelup(); break;
         case 1: _t->pawnmoving(); break;
         case 2: _t->gameUpdate(); break;
-        case 3: _t->gameLose(); break;
-        case 4: _t->GameUpdate(); break;
-        case 5: _t->EnemyAttack(); break;
-        case 6: _t->EnemyUpdate(); break;
-        case 7: _t->PawnAttack(); break;
-        case 8: _t->PawnLevelUp(); break;
-        case 9: _t->pawnMoving(); break;
-        case 10: _t->GameLose(); break;
-        case 11: _t->GameStateChange((*reinterpret_cast< std::add_pointer_t<Status>>(_a[1]))); break;
+        case 3: _t->gameWin(); break;
+        case 4: _t->gameLose(); break;
+        case 5: _t->GameUpdate(); break;
+        case 6: _t->EnemyAttack(); break;
+        case 7: _t->EnemyUpdate(); break;
+        case 8: _t->PawnAttack(); break;
+        case 9: _t->PawnLevelUp(); break;
+        case 10: _t->pawnMoving(); break;
+        case 11: _t->GameWin(); break;
+        case 12: _t->GameLose(); break;
+        case 13: _t->GameStateChange((*reinterpret_cast< std::add_pointer_t<Status>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -475,8 +493,15 @@ void GameState::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         }
         {
             using _t = void (GameState::*)();
-            if (_t _q_method = &GameState::gameLose; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+            if (_t _q_method = &GameState::gameWin; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (GameState::*)();
+            if (_t _q_method = &GameState::gameLose; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 4;
                 return;
             }
         }
@@ -502,13 +527,13 @@ int GameState::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }
@@ -532,8 +557,14 @@ void GameState::gameUpdate()
 }
 
 // SIGNAL 3
-void GameState::gameLose()
+void GameState::gameWin()
 {
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+}
+
+// SIGNAL 4
+void GameState::gameLose()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }
 QT_WARNING_POP

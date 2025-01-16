@@ -12,11 +12,13 @@ HomePage::HomePage(QWidget *parent)
     setFixedSize(QSize(1000, 600));
 
     background.load(":/pics/pics/homepage.png");
-    role_page = new RolePage;
+    role_page = new RolePage(this);
+    role_page->hide();
     game_page = nullptr;
 
     connect(ui->gamebtn, &gameBtn::game_clicked, this, &HomePage::openRole);
     connect(ui->shopbtn, &shopBtn::shop_clicked, this, &HomePage::openShop);
+    connect(role_page, &RolePage::gameOpen, this, &HomePage::openGame);
 
 }
 
@@ -54,7 +56,6 @@ void HomePage::openRole()
     }
     else{
         role_page->show();
-        connect(role_page, &RolePage::gameOpen, this, &HomePage::openGame);
     }
 }
 

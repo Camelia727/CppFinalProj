@@ -76,13 +76,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 83,
+				"line" : 85,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 66,
+				"line" : 68,
 				"parent" : 0
 			},
 			{
@@ -387,7 +387,9 @@
 				26,
 				28,
 				31,
-				40
+				34,
+				37,
+				48
 			]
 		}
 	],
@@ -517,7 +519,9 @@
 				26,
 				28,
 				31,
-				40
+				34,
+				37,
+				48
 			]
 		},
 		{
@@ -537,11 +541,15 @@
 				27,
 				30,
 				33,
-				34,
-				35,
 				36,
-				37,
-				38
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46
 			]
 		},
 		{
@@ -555,15 +563,17 @@
 				22,
 				29,
 				32,
-				39
+				35,
+				38,
+				47
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				41,
-				42
+				49,
+				50
 			]
 		}
 	],
@@ -750,6 +760,38 @@
 			"sourceGroupIndex" : 2
 		},
 		{
+			"backtrace" : 4,
+			"path" : "gamepausepage.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "gamepausepage.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "gamepausepage.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "gamewinbox.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "gamewinbox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "gamewinbox.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/include/ui_homepage.h",
@@ -783,6 +825,18 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/include/ui_buffpage.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/include/ui_gamepausepage.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/include/ui_gamewinbox.h",
 			"sourceGroupIndex" : 1
 		},
 		{
