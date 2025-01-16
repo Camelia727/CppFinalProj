@@ -144,6 +144,7 @@ private:
     QRect PawnRect;
     QList<Enemy*> EnemyList;
     QList<FallingObject*> FallingList;
+    QTimer* secTimer;
     QTimer* enemyMoveTimer;
     QTimer* enemyAttackTimer;
     QTimer* enemyUpdateTimer;
@@ -191,8 +192,10 @@ signals:
     void gameWin();
     void gameLose();
     void falling(QPointF pos);
+    void sec(int time);
 
 public slots:
+    void secUpdate();
     void GameUpdate();
     void EnemyAttack();
     void EnemyUpdate();

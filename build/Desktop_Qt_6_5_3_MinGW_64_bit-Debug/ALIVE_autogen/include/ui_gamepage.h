@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,7 @@ class Ui_GamePage
 {
 public:
     QWidget *widget;
+    QLabel *timer;
 
     void setupUi(QWidget *GamePage)
     {
@@ -28,6 +30,13 @@ public:
         widget = new QWidget(GamePage);
         widget->setObjectName("widget");
         widget->setGeometry(QRect(90, 110, 951, 561));
+        timer = new QLabel(GamePage);
+        timer->setObjectName("timer");
+        timer->setGeometry(QRect(520, 30, 80, 41));
+        QFont font;
+        font.setPointSize(15);
+        timer->setFont(font);
+        timer->setAlignment(Qt::AlignCenter);
 
         retranslateUi(GamePage);
 
@@ -37,6 +46,7 @@ public:
     void retranslateUi(QWidget *GamePage)
     {
         GamePage->setWindowTitle(QCoreApplication::translate("GamePage", "Form", nullptr));
+        timer->setText(QCoreApplication::translate("GamePage", "TextLabel", nullptr));
     } // retranslateUi
 
 };

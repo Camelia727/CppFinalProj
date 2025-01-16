@@ -113,6 +113,8 @@ public slots:
     void buffsel(int buff);         // 选好buff传给gamestate
 
     void pausegoon() {gamestate->setStatus(Status::GAMEON);}
+
+    void secUpdate(int time);       // 每秒更新计时器
 };
 
 #endif // GAMEPAGE_H

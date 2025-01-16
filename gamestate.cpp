@@ -32,6 +32,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     , history(his)
     , PawnPos(290, 360)
     , EnemyList({})
+    , secTimer(new QTimer(this))
     , enemyMoveTimer(new QTimer(this))
     , enemyAttackTimer(new QTimer(this))
     , enemyUpdateTimer(new QTimer(this))
@@ -42,6 +43,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     Pawn = new class Pawn(his, RoleType::SWORDSMAN, this);
 
     //*******计时器の信号与槽********
+    connect(secTimer, &QTimer::timeout, this, &GameState::secUpdate);
     connect(enemyMoveTimer, &QTimer::timeout, this, &GameState::GameUpdate);
     connect(enemyAttackTimer, &QTimer::timeout, this, &GameState::EnemyAttack);
     connect(pawnAttackTimer, &QTimer::timeout, this, &GameState::PawnAttack);
@@ -49,6 +51,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     connect(enemyUpdateTimer, &QTimer::timeout, this, &GameState::EnemyUpdate);
     connect(roundTimer, &QTimer::timeout, this, &GameState::GameWin);
 
+    secTimer->start(1000);
     enemyMoveTimer->start(100);
     enemyAttackTimer->start(1000);
     enemyUpdateTimer->start(1500);
@@ -301,6 +304,7 @@ void GameState::setStatus(Status statu)
         if (status == Status::GAMETMP){
             status = statu;
             roundTimer->start(remainedtime);
+            secTimer->start(1000);
             enemyAttackTimer->start(1000);
             enemyMoveTimer->start(100);
             enemyUpdateTimer->start(1500);
@@ -314,6 +318,7 @@ void GameState::setStatus(Status statu)
             status = statu;
             remainedtime = 30000;
             roundTimer->setInterval(30000);
+            secTimer->stop();
             enemyAttackTimer->stop();
             enemyMoveTimer->stop();
             enemyUpdateTimer->stop();
@@ -327,6 +332,7 @@ void GameState::setStatus(Status statu)
             qDebug() << "status change";
             status = statu;
             remainedtime = roundTimer->remainingTime();
+            secTimer->stop();
             enemyAttackTimer->stop();
             enemyMoveTimer->stop();
             enemyUpdateTimer->stop();
@@ -363,6 +369,12 @@ void GameState::pickItem(int type)
     default:
         break;
     }
+}
+
+void GameState::secUpdate()
+{
+    int time = roundTimer->remainingTime() / 1000;
+    emit sec(time);
 }
 
 void GameState::GameUpdate()

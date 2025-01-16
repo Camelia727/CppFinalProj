@@ -109,6 +109,8 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     setFixedSize(1120,760);
 
     ui->setupUi(this);
+    ui->timer->setText("60");
+    ui->timer->setStyleSheet("color:rgba(255,255,255,255)");
     map = gamestate->getMap();
     background.load(":/pics/pics/background.png");
     enemybloodbar.load(":/pics/pics/bloodbar.png");
@@ -129,6 +131,8 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     connect(gamestate, &GameState::pawnmoving, this, &GamePage::pawnMove);
 
     connect(gamestate, &GameState::levelup, this, &GamePage::buffPageOpen);
+
+    connect(gamestate, &GameState::sec, this, &GamePage::secUpdate);
 
     qDebug() << "gamepage init";
 
@@ -287,5 +291,11 @@ void GamePage::buffsel(int buff)
 {
     gamestate->setStatus(Status::GAMEON);
     gamestate->gainBuff(buff);
+}
+
+void GamePage::secUpdate(int time)
+{
+    ui->timer->setText(QString::number(time));
+    update();
 }
 
