@@ -46,7 +46,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     connect(enemyAttackTimer, &QTimer::timeout, this, &GameState::EnemyAttack);
     connect(pawnAttackTimer, &QTimer::timeout, this, &GameState::PawnAttack);
     connect(pawnMoveTimer, &QTimer::timeout, this, &GameState::pawnMoving);
-    // connect(enemyUpdateTimer, &QTimer::timeout, this, &GameState::EnemyUpdate);
+    connect(enemyUpdateTimer, &QTimer::timeout, this, &GameState::EnemyUpdate);
 
     enemyMoveTimer->start(100);
     enemyAttackTimer->start(1000);
