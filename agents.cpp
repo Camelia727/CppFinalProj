@@ -4,6 +4,7 @@
 
 Enemy::Enemy(int id, EnemyType type, QPointF position, QObject* parent)
     : id(id)
+    , name("enemy")
     , type(type)
     , pos(position)
     , QObject(parent)
@@ -101,6 +102,7 @@ void Enemy::getHurt(double dmg)
 Hamadryad::Hamadryad(int id, QPointF position, QObject* parent)
     : Enemy(id, EnemyType::HAMADRYAD, position, parent)
 {
+    name = "hamadryad";
     pic.load(":/pics/pics/hamadryad.png");
 }
 
@@ -112,6 +114,7 @@ QRect Hamadryad::getRect()
 Demon::Demon(int id, QPointF position, QObject *parent)
     : Enemy(id, EnemyType::DEMON, position, parent)
 {
+    name = "demon";
     pic.load(":/pics/pics/demon.png");
 }
 
@@ -123,6 +126,7 @@ QRect Demon::getRect()
 MutatedDemon::MutatedDemon(int id, QPointF position, QObject *parent)
     : Enemy(id, EnemyType::MUTATEDDEMON, position, parent)
 {
+    name = "mutateddemon";
     pic.load(":/pics/pics/mutated_demon.png");
 }
 
@@ -134,6 +138,7 @@ QRect MutatedDemon::getRect()
 Wizard::Wizard(int id, QPointF position, QObject *parent)
     : Enemy(id, EnemyType::WIZARD, position, parent)
 {
+    name = "wizard";
     pic.load(":/pics/pics/wizard.png");
 }
 

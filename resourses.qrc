@@ -45,4 +45,10 @@
         <file>pics/gameLosePic.png</file>
         <file>pics/gameWinPic.png</file>
     </qresource>
+    <qresource prefix="/falling">
+        <file>pics/fallingexp.png</file>
+        <file>pics/fallingfood.jpg</file>
+        <file>pics/fallinggold.png</file>
+        <file>pics/fallingfood.png</file>
+    </qresource>
 </RCC>

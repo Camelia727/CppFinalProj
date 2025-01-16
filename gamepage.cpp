@@ -149,10 +149,12 @@ void GamePage::paintEvent(QPaintEvent *event)
     Backpainter.drawPixmap(this->rect(), background);
     QPainter Mappainter(this);
     QPainter Enemypainter(this);
-    QPainter Fallingpainter(this);
+    for (FallingObject* item : gamestate->getFallingList()){
+        Mappainter.drawPixmap(QRect(item->getPos().x(), item->getPos().y(), 50, 50), item->getPic());
+    }
     for (Enemy* enemy : gamestate->getEnemyList()){
-        Enemypainter.drawPixmap(QRect(90+enemy->getPos().x(), 100+enemy->getPos().y(),GRIDSIZE,GRIDSIZE), enemy->getPixmap());
-        Enemypainter.drawPixmap(QRect(90+enemy->getPos().x(), 85+enemy->getPos().y(),GRIDSIZE*enemy->hpPercent(),10), enemybloodbar);
+        Enemypainter.drawPixmap(QRect(enemy->getPos().x(), enemy->getPos().y(),GRIDSIZE,GRIDSIZE), enemy->getPixmap());
+        Enemypainter.drawPixmap(QRect(enemy->getPos().x(), enemy->getPos().y()-15,GRIDSIZE*enemy->hpPercent(),10), enemybloodbar);
     }
     QPainter Pawnpainter(this);
     Pawnpainter.drawPixmap(gamestate->getPawnPos().x(), gamestate->getPawnPos().y(), 40, 70, gamestate->getPawnPixmap());
@@ -202,8 +204,6 @@ void GamePage::closeEvent(QCloseEvent *event)
     qDebug() << "gamepage closeevent";
     event->accept();
 }
-
-
 
 void GamePage::iconPressEvent(QPoint p)
 {

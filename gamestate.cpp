@@ -55,7 +55,7 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     enemyUpdateTimer->start(1500);
     pawnAttackTimer->start(800);
     pawnMoveTimer->start(100);
-    roundTimer->start(30000);
+    roundTimer->start(60000);
 
     //*******游戏状态の信号与槽*******
     connect(Pawn, &Pawn::pawnDead, this, &GameState::GameLose);
@@ -181,14 +181,14 @@ QPointF GameState::EnemyDirection(Enemy *enemy)
     QPoint pawnPos = PawnPos.toPoint();
 
     // 存储所有障碍物的左上坐标，需要转换为矩形区域
-    QSet<QPoint> blockSet;
-    for (const QPoint &block : Map.get_blocks()) {
-        for (int x = block.x(); x < block.x() + 50; ++x) {
-            for (int y = block.y(); y < block.y() + 50; ++y) {
-                blockSet.insert(QPoint(x, y));
-            }
-        }
-    }
+    // QSet<QPoint> blockSet;
+    // for (const QPoint &block : Map.get_blocks()) {
+    //     for (int x = block.x(); x < block.x() + 50; ++x) {
+    //         for (int y = block.y(); y < block.y() + 50; ++y) {
+    //             blockSet.insert(QPoint(x, y));
+    //         }
+    //     }
+    // }
 
     // 定义节点结构
     struct Node {
@@ -229,7 +229,7 @@ QPointF GameState::EnemyDirection(Enemy *enemy)
         for (const QPoint &direction : directions) {
             QPoint neighborPos = currentNode.position + direction;
 
-            if (blockSet.contains(neighborPos) || neighborPos.x() < 0 || neighborPos.y() < 0 ||
+            if (/*blockSet.contains(neighborPos) || */neighborPos.x() < 0 || neighborPos.y() < 0 ||
                 neighborPos.x() >= 1040 || neighborPos.y() >= 710) {
                 continue; // 跳过障碍物和地图边界外的位置
             }
@@ -260,16 +260,26 @@ void GameState::PawnMove(QPointF direction)
         newPlayerRect.bottom() > 110+Map.getSize().height()
         )
         collides = true;
-    for (const QPoint& b : Map.get_blocks()){
-        if (newPlayerRect.intersects(QRect(b, QSize(50,50)))){
-            collides = true;
-            break;
-        }
-    }
+    // for (const QPoint& b : Map.get_blocks()){
+    //     if (newPlayerRect.intersects(QRect(b, QSize(50,50)))){
+    //         collides = true;
+    //         break;
+    //     }
+    // }
     if (!collides)
     {
         PawnPos += direction * Pawn->getSpd();
         Pawn->setPos(PawnPos);
+    }
+    for (int i = 0; i < FallingList.size(); i++){
+        FallingObject* item = FallingList[i];
+        QPointF distP = item->getPos() - PawnPos;
+        int dist = std::abs(distP.x()) + std::abs(distP.y());
+        if (dist <= Pawn->getPickingRg()) {
+            pickItem(item->getType());
+            FallingList.removeAt(i);
+            delete item;
+        }
     }
     // qDebug() << "position " << PawnPos.x() << "," << PawnPos.y();
 }
@@ -315,6 +325,8 @@ void GameState::EnemyMove(Enemy *enemy)
 
 void GameState::EnemyDead(Enemy *enemy)
 {
+    QString name = enemy->getName();
+    QPointF pos = enemy->getPos();
     for (int i = 0; i < EnemyList.size(); i++){
         if (EnemyList.at(i)->getId() == enemy->getId()){
             delete EnemyList.at(i);
@@ -323,6 +335,14 @@ void GameState::EnemyDead(Enemy *enemy)
         }
     }
     Pawn->gainExp(5);
+    if (name == "demon"){
+        if (QRandomGenerator::global()->bounded(100) < 50)
+            Falling(pos);
+    }
+    else if (name == "mutateddemon"){
+        if (QRandomGenerator::global()->bounded(100) < 70)
+            Falling(pos);
+    }
 }
 
 void GameState::gainBuff(int buff)
@@ -368,6 +388,31 @@ void GameState::setStatus(Status statu)
             pawnAttackTimer->stop();
             pawnMoveTimer->stop();
         }
+        break;
+    default:
+        break;
+    }
+}
+
+void GameState::Falling(QPointF pos)
+{
+    FallingObject* item = new FallingObject(QRandomGenerator::global()->bounded(9)/3+1, pos);
+    FallingList.append(item);
+    qDebug() << "Falling something:" << item->getType();
+}
+
+void GameState::pickItem(int type)
+{
+    qDebug() << "picking";
+    switch (type){
+    case 1:
+        coins += 100;
+        break;
+    case 2:
+        Pawn->recoverHp(Pawn->getMaxHp()*0.25);
+        break;
+    case 3:
+        Pawn->gainExp(50);
         break;
     default:
         break;
@@ -511,23 +556,19 @@ void Grid::removeEnemy(Enemy *enemy)
 
 
 
-void FallingObject::paintEvent(QPaintEvent *event)
-{
-
-}
-
-FallingObject::FallingObject(QWidget *parent, int t)
-    : QWidget{parent}
-    , type(t)
+FallingObject::FallingObject(int t, QPointF pos)
+    : type(t)
+    , pos(pos)
 {
     switch(type){
-    case NONE:
+    case 1:
+        pic.load(":/falling/pics/fallinggold.png");
         break;
-    case COINBOX:
+    case 2:
+        pic.load(":/falling/pics/fallingfood.png");
         break;
-    case MEDICIAN:
-        break;
-    case EXPBOX:
+    case 3:
+        pic.load(":/falling/pics/fallingexp.png");
         break;
     default:
         break;
@@ -548,19 +589,19 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     switch (type){
     case RoleType::SWORDSMAN:
         max_hp = 100.0;
-        atk = 10.0;
+        atk = 1000.0;
         atp = 1.0;
         spd = 10.0;
-        picking_range = 2;
-        attack_range = 10;
+        picking_range = 20;
+        attack_range = 500;
         pic.load(":/pics/pics/swordsman.png");
         break;
     case RoleType::MAGICIAN:
         max_hp = 700.0;
-        atk = 15.0;
+        atk = 1500.0;
         atp = 1.0;
         spd = 10.0;
-        picking_range = 4;
+        picking_range = 400;
         attack_range = 5;
         pic.load(":/pics/pics/magician.png");
         break;
@@ -622,6 +663,21 @@ void Pawn::gainBuff(int buff)
         break;
     case 5:
         coin *= 1.15;
+        break;
+    default:
+        break;
+    }
+}
+
+void Pawn::pickItem(int type)
+{
+    switch(type){
+    case 1:
+
+        break;
+    case 2:
+        break;
+    case 3:
         break;
     default:
         break;

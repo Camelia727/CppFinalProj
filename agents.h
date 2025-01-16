@@ -49,6 +49,7 @@ enum class EnemyType{
 class Enemy : public QObject{
     Q_OBJECT
 protected:
+    QString name;
     int id;
     EnemyType type;
     double max_hp;
@@ -67,6 +68,7 @@ public:
         NONE
     };
     Enemy(int id, EnemyType type = EnemyType::BASE, QPointF position = QPoint(0,0), QObject* parent = nullptr);
+    QString getName() const {return name;}
     QPointF getPos();
     QPixmap getPixmap();
     double getATK() const;

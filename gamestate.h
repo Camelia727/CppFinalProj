@@ -50,20 +50,17 @@ public:
 
 };
 
-class FallingObject : public QWidget {
+class FallingObject : public QObject {
     Q_OBJECT
 private:
     int type;
-protected:
-    void paintEvent(QPaintEvent* event);
+    QPointF pos;
+    QPixmap pic;
 public:
-    enum Type : int{
-        NONE,
-        COINBOX,
-        MEDICIAN,
-        EXPBOX
-    };
-    FallingObject(QWidget* parent = nullptr, int t = 0);
+    FallingObject(int t, QPointF pos);
+    int getType() const {return type;}
+    QPointF getPos() const {return pos;}
+    QPixmap getPic() const {return pic;}
 };
 
 class Pawn : public QObject{
@@ -91,13 +88,14 @@ private:
 public:
     explicit Pawn(History* his, RoleType type, QObject* parent = nullptr);
     void beHurt(double dmg = 0.0);
-    void recoverHp(double rec = 0.0) {hp += rec;}
+    void recoverHp(double rec = 0.0) {hp = fmin(max_hp, hp+rec);}
     void attack(Enemy* enemy);
     void setBleeding(bool b) {bleeding = b;}
     void setPos(QPointF npos) {pos = npos;}
     void gainExp(const int e) {exp+=e; if(exp >= 100) levelUp();}
     void levelUp() {level++;exp-=100;emit levelup();}
     void gainBuff(int buff);
+    void pickItem(int type);
     QPointF getPos() const {return pos;}
     QPixmap getPic() const {return pic;}
     QRectF getRect() const {return QRectF(pos, QSizeF(40,70));}
@@ -105,7 +103,10 @@ public:
     int getLevel() const {return level;}
     int getAtkRange() const {return attack_range;}
     int getAtkSpeed() const {return atp;}
+    int getPickingRg() const {return picking_range;}
     double getSpd() const {return spd;}
+    double getHp() const {return hp;}
+    double getMaxHp() const {return max_hp;}
     double hpPercent() const {return hp/max_hp;}
     bool isBleeding() const {return bleeding;}
     bool isDead() const {return dead;}
@@ -140,6 +141,7 @@ private:
     QPointF PawnPos;
     QRect PawnRect;
     QList<Enemy*> EnemyList;
+    QList<FallingObject*> FallingList;
     QTimer* enemyMoveTimer;
     QTimer* enemyAttackTimer;
     QTimer* enemyUpdateTimer;
@@ -168,6 +170,7 @@ public:
     QRectF getPawnRect() const;
     double getPawnHpPercent() const;
     GameMap getMap() const;
+    QList<FallingObject*> getFallingList() const {return FallingList;}
     QList<Enemy*> getEnemyList() const;
     QPointF EnemyDirection(Enemy* enemy);
     void PawnMove(QPointF direction);
@@ -176,6 +179,8 @@ public:
     void EnemyDead(Enemy* enemy = nullptr);
     void gainBuff(int buff);
     void setStatus(Status status);
+    void Falling(QPointF pos);
+    void pickItem(int type);
 
 signals:
     void levelup();
@@ -183,6 +188,7 @@ signals:
     void gameUpdate();
     void gameWin();
     void gameLose();
+    void falling(QPointF pos);
 
 public slots:
     void GameUpdate();
