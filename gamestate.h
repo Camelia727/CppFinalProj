@@ -39,10 +39,12 @@ public:
 
 class GameMap{
 private:
-    int m, n;
+    int m, n, top, left;
     QList<QPoint> blocks;
 public:
     GameMap();
+    int getTop() const {return top;}
+    int getLeft() const {return left;}
     QSize getSize();
     QList<QPoint> get_blocks();
     void importMap(QString fileName);

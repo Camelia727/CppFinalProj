@@ -38,7 +38,7 @@ public:
     void retranslateUi(QWidget *GameLoseBox)
     {
         GameLoseBox->setWindowTitle(QCoreApplication::translate("GameLoseBox", "Form", nullptr));
-        home->setText(QCoreApplication::translate("GameLoseBox", "home", nullptr));
+        home->setText(QCoreApplication::translate("GameLoseBox", "\344\270\273 \351\241\265", nullptr));
     } // retranslateUi
 
 };

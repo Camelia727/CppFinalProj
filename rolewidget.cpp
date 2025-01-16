@@ -7,8 +7,8 @@ RoleWidget::RoleWidget(QWidget *parent, QString name)
     setFixedSize(QSize(256, 256));
     rect.setRect(28,28,200,200);
 
-    if (name == "Swordsman") pic.load(":/pics/pics/swordsman.png");
-    else if (name == "Magician") pic.load(":/pics/pics/magician.png");
+    if (name == "Swordsman") pic.load(":/pawn/pics/swordsman.png");
+    else if (name == "Magician") pic.load(":/pawn/pics/magician.png");
 }
 
 void RoleWidget::setName(const QString n)

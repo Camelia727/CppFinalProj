@@ -4,9 +4,12 @@
 
 GameMap::GameMap()
 {
-    m = 950;
-    n = 550;
-    blocks = {QPoint(500,500)};
+    m = 940;
+    n = 420;
+    top = 250;
+    left = 90;
+    blocks = {QPoint(500,500),QPoint(450,650),QPoint(550,550),
+                QPoint(550,330),QPoint(620,400),QPoint(650,250)};
 }
 
 QSize GameMap::getSize()
@@ -23,11 +26,11 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     : QObject{parent}
     , id(0)
     , rounds(0)
-    , coins(666)
+    , coins(0)
     , difficulty(diffi)
     , status(Status::GAMEON)
     , history(his)
-    , PawnPos(290, 310)
+    , PawnPos(290, 360)
     , EnemyList({})
     , enemyMoveTimer(new QTimer(this))
     , enemyAttackTimer(new QTimer(this))
@@ -37,10 +40,6 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     , roundTimer(new QTimer(this))
 {
     Pawn = new class Pawn(his, RoleType::SWORDSMAN, this);
-    EnemyCreate(EnemyType::HAMADRYAD, QPoint(100, 300));
-    // EnemyCreate(EnemyType::DEMON, QPoint(17,0));
-    // EnemyCreate(EnemyType::MUTATEDDEMON, QPoint(0,9));
-    // EnemyCreate(EnemyType::WIZARD, QPoint(17,9));
 
     //*******计时器の信号与槽********
     connect(enemyMoveTimer, &QTimer::timeout, this, &GameState::GameUpdate);
@@ -114,20 +113,20 @@ QPointF GameState::generateEdgePoint()
 
     switch (edge) {
     case TOP:
-        y = 0;
-        x = QRandomGenerator::global()->bounded(0, Map.getSize().width()-1);
+        y = 250;
+        x = QRandomGenerator::global()->bounded(90, 90+Map.getSize().width());
         break;
     case DOWN:
-        y = Map.getSize().height()-1;
-        x = QRandomGenerator::global()->bounded(0, Map.getSize().width()-1);
+        y = Map.getSize().height()-90;
+        x = QRandomGenerator::global()->bounded(90, Map.getSize().width()+90);
         break;
     case LEFT:
-        x = 0;
-        y = QRandomGenerator::global()->bounded(0, Map.getSize().height()-1);
+        x = 90;
+        y = QRandomGenerator::global()->bounded(250, Map.getSize().height()+250);
         break;
     case RIGHT:
-        x = Map.getSize().width()-1;
-        y = QRandomGenerator::global()->bounded(0, Map.getSize().height()-1);
+        x = Map.getSize().width()-90;
+        y = QRandomGenerator::global()->bounded(250, Map.getSize().height()+250);
         break;
     default:
         break;
@@ -171,84 +170,29 @@ QList<Enemy*> GameState::getEnemyList() const
     return EnemyList;
 }
 
-QPointF GameState::EnemyDirection(Enemy *enemy)
-{
-    const QVector<QPoint> directions = {
-        QPoint(0, -1), QPoint(1, -1), QPoint(1, 0), QPoint(1, 1),
-        QPoint(0, 1), QPoint(-1, 1), QPoint(-1, 0), QPoint(-1, -1)
-    };
-    QPoint enemyPos = enemy->getPos().toPoint();
-    QPoint pawnPos = PawnPos.toPoint();
-
-    // 存储所有障碍物的左上坐标，需要转换为矩形区域
-    // QSet<QPoint> blockSet;
-    // for (const QPoint &block : Map.get_blocks()) {
-    //     for (int x = block.x(); x < block.x() + 50; ++x) {
-    //         for (int y = block.y(); y < block.y() + 50; ++y) {
-    //             blockSet.insert(QPoint(x, y));
-    //         }
-    //     }
-    // }
-
-    // 定义节点结构
-    struct Node {
-        QPoint position;
-        int gCost; // 从起点到当前节点的代价
-        int hCost; // 启发式估计代价
-        QPoint parent; // 父节点位置
-
-        bool operator>(const Node &other) const {
-            return gCost + hCost > other.gCost + other.hCost;
-        }
-    };
-    auto heuristic = [](const QPoint &a, const QPoint &b) -> int{
-        return std::abs(a.x() - b.x()) + std::abs(a.y() - b.y());
-    };
-
-    // 优先队列（最小堆）
-    std::priority_queue<Node, QVector<Node>, std::greater<Node>> openSet;
-    QSet<QPoint> closedSet;
-
-    // 初始化起点
-    Node startNode{enemyPos, 0, heuristic(enemyPos, pawnPos), QPoint()};
-    openSet.push(startNode);
-
-    while (!openSet.empty()) {
-        Node currentNode = openSet.top();
-        openSet.pop();
-
-        if (currentNode.position == pawnPos) {
-            // 找到路径，回溯到起点
-            QPoint direction = currentNode.position - (currentNode.parent.isNull() ? enemyPos : currentNode.parent);
-            return QPointF(direction.x(), direction.y());
-        }
-
-        closedSet.insert(currentNode.position);
-
-        // 生成邻居节点
-        for (const QPoint &direction : directions) {
-            QPoint neighborPos = currentNode.position + direction;
-
-            if (/*blockSet.contains(neighborPos) || */neighborPos.x() < 0 || neighborPos.y() < 0 ||
-                neighborPos.x() >= 1040 || neighborPos.y() >= 710) {
-                continue; // 跳过障碍物和地图边界外的位置
+QPointF GameState::EnemyDirection(Enemy* enemy) {
+    QPointF dir = PawnPos - enemy->getPos();
+    double sum = pow(dir.x(), 2) + pow(dir.y(), 2);
+    dir.rx() /= sqrt(sum);
+    dir.ry() /= sqrt(sum);
+    QList<QPointF> dirs = {dir, QPointF(-dir.y(), dir.x()),
+                           QPointF(dir.y(), -dir.x()), -dir};
+    for (QPointF direction : dirs){
+        QPointF newPos = enemy->getPos() + direction*enemy->getSpd();
+        bool collides = false;
+        QRectF newrect = QRectF(newPos, QSize(50,50));
+        for (QPoint block : Map.get_blocks()){
+            if (newrect.intersects(QRect(block, QSize(50,50)))){
+                collides = true;
+                break;
             }
-
-            if (closedSet.contains(neighborPos)) {
-                continue; // 跳过已访问的节点
-            }
-
-            int tentativeGCost = currentNode.gCost + 1; // 假设每个方向移动代价为1
-            int hCost = heuristic(neighborPos, pawnPos);
-            Node neighborNode{neighborPos, tentativeGCost, hCost, currentNode.position};
-            openSet.push(neighborNode);
         }
+        if (!collides)
+            return direction;
     }
-
-    // 如果没有找到路径，返回原点（或某种默认方向）
-    return QPointF(0, 0);
-
+    return QPointF(0,0);
 }
+
 
 void GameState::PawnMove(QPointF direction)
 {
@@ -256,16 +200,16 @@ void GameState::PawnMove(QPointF direction)
     bool collides = false;
     if (newPlayerRect.left() < 90 ||
         newPlayerRect.right() > 90+Map.getSize().width() ||
-        newPlayerRect.top() < 110 ||
-        newPlayerRect.bottom() > 110+Map.getSize().height()
+        newPlayerRect.top() < 250 ||
+        newPlayerRect.bottom() > 250+Map.getSize().height()
         )
         collides = true;
-    // for (const QPoint& b : Map.get_blocks()){
-    //     if (newPlayerRect.intersects(QRect(b, QSize(50,50)))){
-    //         collides = true;
-    //         break;
-    //     }
-    // }
+    for (const QPoint& b : Map.get_blocks()){
+        if (newPlayerRect.intersects(QRect(b, QSize(50,50)))){
+            collides = true;
+            break;
+        }
+    }
     if (!collides)
     {
         PawnPos += direction * Pawn->getSpd();
@@ -375,6 +319,7 @@ void GameState::setStatus(Status statu)
             enemyUpdateTimer->stop();
             pawnAttackTimer->stop();
             pawnMoveTimer->stop();
+            roundTimer->stop();
         }
         break;
     case Status::GAMETMP:
@@ -384,9 +329,10 @@ void GameState::setStatus(Status statu)
             remainedtime = roundTimer->remainingTime();
             enemyAttackTimer->stop();
             enemyMoveTimer->stop();
-            enemyAttackTimer->stop();
+            enemyUpdateTimer->stop();
             pawnAttackTimer->stop();
             pawnMoveTimer->stop();
+            roundTimer->stop();
         }
         break;
     default:
@@ -589,12 +535,12 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     switch (type){
     case RoleType::SWORDSMAN:
         max_hp = 100.0;
-        atk = 1000.0;
+        atk = 30.0;
         atp = 1.0;
         spd = 10.0;
-        picking_range = 20;
+        picking_range = 50;
         attack_range = 500;
-        pic.load(":/pics/pics/swordsman.png");
+        pic.load(":/pawn/pics/swordsman.png");
         break;
     case RoleType::MAGICIAN:
         max_hp = 700.0;
@@ -603,7 +549,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
         spd = 10.0;
         picking_range = 400;
         attack_range = 5;
-        pic.load(":/pics/pics/magician.png");
+        pic.load(":/pawn/pics/magician.png");
         break;
     default:
         break;

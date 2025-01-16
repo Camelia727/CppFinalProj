@@ -16,22 +16,22 @@ PawnWidget::PawnWidget(QWidget *parent, QString name)
     , pos(QPoint(0,0))
 {
     if (name == "Swordsman") {
-        setFixedSize(QSize(40, 77));
-        size = QSize(40,77);
-        pic.load(":/pics/pics/swordsman.png");
+        setFixedSize(QSize(50, 90));
+        size = QSize(50,90);
+        pic.load(":/pawn/pics/swordsman.png");
     }
     else if (name == "Magician") {
-        setFixedSize(QSize(40, 61));
-        size = QSize(40,61);
-        pic.load(":/pics/pics/magician.png");
+        setFixedSize(QSize(50, 90));
+        size = QSize(50,90);
+        pic.load(":/pawn/pics/magician.png");
     }
-    rect.setRect(MAPLEFT+(GRIDSIZE-size.width())/2+pos.x(), MAPTOP+GRIDSIZE-10+pos.y()-size.height(), size.width(), size.height());
+    rect.setRect(MAPLEFT+pos.x(), MAPTOP+GRIDSIZE-10+pos.y()-size.height(), size.width(), size.height());
 }
 
 void PawnWidget::setPos(const QPoint point)
 {
     pos = point;
-    rect.setRect(MAPLEFT+(GRIDSIZE-size.width())/2+pos.x(), MAPTOP+GRIDSIZE-10+pos.y()-size.height(), size.width(), size.height());
+    rect.setRect(MAPLEFT+pos.x(), MAPTOP+GRIDSIZE-10+pos.y()-size.height(), size.width(), size.height());
 }
 
 QRect PawnWidget::getRect() const
@@ -130,8 +130,6 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
 
     connect(gamestate, &GameState::levelup, this, &GamePage::buffPageOpen);
 
-    pawnMoveTimer->start(1);
-
     qDebug() << "gamepage init";
 
 }
@@ -149,6 +147,9 @@ void GamePage::paintEvent(QPaintEvent *event)
     Backpainter.drawPixmap(this->rect(), background);
     QPainter Mappainter(this);
     QPainter Enemypainter(this);
+    for (QPoint ablock : gamestate->getMap().get_blocks()){
+        Mappainter.drawPixmap(QRect(ablock.x(), ablock.y(), GRIDSIZE, GRIDSIZE), block);
+    }
     for (FallingObject* item : gamestate->getFallingList()){
         Mappainter.drawPixmap(QRect(item->getPos().x(), item->getPos().y(), 50, 50), item->getPic());
     }

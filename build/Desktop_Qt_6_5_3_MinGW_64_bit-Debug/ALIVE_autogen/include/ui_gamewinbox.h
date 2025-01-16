@@ -28,7 +28,7 @@ public:
         GameWinBox->resize(400, 300);
         home = new QPushButton(GameWinBox);
         home->setObjectName("home");
-        home->setGeometry(QRect(170, 240, 56, 18));
+        home->setGeometry(QRect(150, 240, 93, 28));
 
         retranslateUi(GameWinBox);
 
