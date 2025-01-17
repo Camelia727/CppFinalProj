@@ -39,6 +39,8 @@ public:
     GameMap();
     int getTop() const {return top;}
     int getLeft() const {return left;}
+    int getBottom() const {return top+n;}
+    int getRight() const {return left+m;}
     QSize getSize();
     QList<QPoint> get_blocks();
     void importMap(QString fileName);

@@ -176,24 +176,89 @@ QList<Enemy*> GameState::getEnemyList() const
 }
 
 QPointF GameState::EnemyDirection(Enemy* enemy) {
-    QPointF dir = PawnPos - enemy->getPos();
-    double sum = pow(dir.x(), 2) + pow(dir.y(), 2);
-    dir.rx() /= sqrt(sum);
-    dir.ry() /= sqrt(sum);
-    QList<QPointF> dirs = {dir, QPointF(-dir.y(), dir.x()),
-                           QPointF(dir.y(), -dir.x()), -dir};
-    for (QPointF direction : dirs){
-        QPointF newPos = enemy->getPos() + direction*enemy->getSpd();
+    QPointF dir;
+    if (enemy->getName() == "demon" && enemy->ismoving()){
+        dir = enemy->getCurdir();
+        double sum = pow(dir.x(), 2) + pow(dir.y(), 2);
+        dir.rx() /= sqrt(sum);
+        dir.ry() /= sqrt(sum);
+        QPointF newPos = enemy->getPos() + dir*enemy->getSpd();
         bool collides = false;
         QRectF newrect = QRectF(newPos, QSize(50,50));
-        for (QPoint block : Map.get_blocks()){
-            if (newrect.intersects(QRect(block, QSize(50,50)))){
-                collides = true;
-                break;
+        if (newrect.top() < Map.getTop() || newrect.left() < Map.getLeft() ||
+            newrect.bottom() > Map.getBottom() || newrect.right() > Map.getRight())
+            collides = true;
+        if (!collides)
+            for (QPoint block : Map.get_blocks()){
+                if (newrect.intersects(QRect(block, QSize(50,50)))){
+                    collides = true;
+                    break;
+                }
+            }
+        if (!collides)
+            return dir;
+        else{
+            qDebug() << "demon collides, change dir";
+            dir = PawnPos - enemy->getPos();
+            double sum = pow(dir.x(), 2) + pow(dir.y(), 2);
+            dir.rx() /= sqrt(sum);
+            dir.ry() /= sqrt(sum);
+
+            QList<QPointF> dirs = {dir, QPointF(-dir.y(), dir.x()),
+                                   QPointF(dir.y(), -dir.x()), -dir};
+            for (QPointF direction : dirs){
+                QPointF newPos = enemy->getPos() + direction*enemy->getSpd();
+                bool collides = false;
+                QRectF newrect = QRectF(newPos, QSize(50,50));
+                if (newrect.top() < Map.getTop() || newrect.left() < Map.getLeft() ||
+                    newrect.bottom() > Map.getBottom() || newrect.right() > Map.getRight())
+                    collides = true;
+                if (!collides)
+                    for (QPoint block : Map.get_blocks()){
+                        if (newrect.intersects(QRect(block, QSize(50,50)))){
+                            collides = true;
+                            break;
+                        }
+                    }
+                if (!collides){
+                    if (enemy->getName() == "demon"){
+                        enemy->setCurdir(direction);
+                    }
+                    return direction;
+                }
             }
         }
-        if (!collides)
-            return direction;
+    }
+    else{
+        dir = PawnPos - enemy->getPos();
+        double sum = pow(dir.x(), 2) + pow(dir.y(), 2);
+        dir.rx() /= sqrt(sum);
+        dir.ry() /= sqrt(sum);
+
+        QList<QPointF> dirs = {dir, QPointF(-dir.y(), dir.x()),
+                               QPointF(dir.y(), -dir.x()), -dir};
+        for (QPointF direction : dirs){
+            QPointF newPos = enemy->getPos() + direction*enemy->getSpd();
+            bool collides = false;
+            QRectF newrect = QRectF(newPos, QSize(50,50));
+            if (newrect.top() < Map.getTop() || newrect.left() < Map.getLeft() ||
+                newrect.bottom() > Map.getBottom() || newrect.right() > Map.getRight())
+                collides = true;
+            if (!collides)
+                for (QPoint block : Map.get_blocks()){
+                    if (newrect.intersects(QRect(block, QSize(50,50)))){
+                        collides = true;
+                        break;
+                    }
+                }
+            if (!collides){
+                if (enemy->getName() == "demon"){
+                    enemy->setmoving(true);
+                    enemy->setCurdir(direction);
+                }
+                return direction;
+            }
+        }
     }
     return QPointF(0,0);
 }

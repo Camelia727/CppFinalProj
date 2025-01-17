@@ -78,6 +78,10 @@ public:
     double hpPercent() const;
     void move(QPointF direction);
     void getHurt(double dmg);
+    virtual bool ismoving() const {return false;}
+    virtual QPointF getCurdir() const {return QPointF(0,0);}
+    virtual void setmoving(bool move) {}
+    virtual void setCurdir(QPointF dir) {}
 signals:
     void enemyDead(Enemy* enemy);
 };
@@ -89,9 +93,15 @@ public:
 };
 
 class Demon : public Enemy{
+    bool moving;
+    QPointF curdir;
 public:
     Demon(int id, QPointF position = QPoint(0,0), QObject* parent = nullptr);
     QRect getRect();
+    bool ismoving() const {return moving;}
+    QPointF getCurdir() const {return curdir;}
+    void setmoving(bool move) {moving = move;}
+    void setCurdir(QPointF dir) {curdir = dir;}
 };
 
 class MutatedDemon : public Enemy{

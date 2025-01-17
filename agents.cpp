@@ -115,6 +115,8 @@ Demon::Demon(int id, QPointF position, QObject *parent)
     : Enemy(id, EnemyType::DEMON, position, parent)
 {
     name = "demon";
+    moving = false;
+    curdir = QPointF(0,0);
     pic.load(":/pics/pics/demon.png");
 }
 
