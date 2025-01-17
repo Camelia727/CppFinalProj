@@ -40,14 +40,16 @@ struct qt_meta_stringdata_CLASSRoleWidgetENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSRoleWidgetENDCLASS = QtMocHelpers::stringData(
     "RoleWidget",
     "role_clicked",
-    ""
+    "",
+    "name"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSRoleWidgetENDCLASS_t {
-    uint offsetsAndSizes[6];
+    uint offsetsAndSizes[8];
     char stringdata0[11];
     char stringdata1[13];
     char stringdata2[1];
+    char stringdata3[5];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSRoleWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -55,11 +57,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSRoleWidgetENDCLASS_t qt_meta_st
     {
         QT_MOC_LITERAL(0, 10),  // "RoleWidget"
         QT_MOC_LITERAL(11, 12),  // "role_clicked"
-        QT_MOC_LITERAL(24, 0)   // ""
+        QT_MOC_LITERAL(24, 0),  // ""
+        QT_MOC_LITERAL(25, 4)   // "name"
     },
     "RoleWidget",
     "role_clicked",
-    ""
+    "",
+    "name"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -79,10 +83,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSRoleWidgetENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x06,    1 /* Public */,
+       1,    1,   20,    2, 0x06,    1 /* Public */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
 
        0        // eod
 };
@@ -97,7 +101,8 @@ Q_CONSTINIT const QMetaObject RoleWidget::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<RoleWidget, std::true_type>,
         // method 'role_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
     nullptr
 } };
@@ -108,20 +113,19 @@ void RoleWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<RoleWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->role_clicked(); break;
+        case 0: _t->role_clicked((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (RoleWidget::*)();
+            using _t = void (RoleWidget::*)(QString );
             if (_t _q_method = &RoleWidget::role_clicked; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *RoleWidget::metaObject() const
@@ -155,8 +159,9 @@ int RoleWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void RoleWidget::role_clicked()
+void RoleWidget::role_clicked(QString _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

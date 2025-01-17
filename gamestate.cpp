@@ -22,12 +22,11 @@ QList<QPoint> GameMap::get_blocks()
     return blocks;
 }
 
-GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
+GameState::GameState(History* his, QString name, QObject* parent)
     : QObject{parent}
     , id(0)
     , rounds(0)
     , coins(0)
-    , difficulty(diffi)
     , status(Status::GAMEON)
     , history(his)
     , PawnPos(290, 360)
@@ -40,7 +39,10 @@ GameState::GameState(History* his, DiffiLevel diffi, QObject* parent)
     , pawnMoveTimer(new QTimer(this))
     , roundTimer(new QTimer(this))
 {
-    Pawn = new class Pawn(his, RoleType::SWORDSMAN, this);
+    if (name == "Swordsman")
+        Pawn = new class Pawn(his, RoleType::SWORDSMAN, this);
+    if (name == "Magician")
+        Pawn = new class Pawn(his, RoleType::MAGICIAN, this);
 
     //*******计时器の信号与槽********
     connect(secTimer, &QTimer::timeout, this, &GameState::secUpdate);
@@ -402,7 +404,7 @@ void GameState::EnemyAttack()
 
 void GameState::EnemyUpdate()
 {
-    int random_type = QRandomGenerator::global()->bounded(0, static_cast<int>(difficulty)+1);
+    int random_type = QRandomGenerator::global()->bounded(0, 100);
     int tmp = 0;
     EnemyType enemy_type;
     if (random_type <= static_cast<int>(EnemyType::HAMADRYAD))
@@ -547,7 +549,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     switch (type){
     case RoleType::SWORDSMAN:
         max_hp = 100.0;
-        atk = 10.0;
+        atk = 1000.0;
         atp = 1.0;
         spd = 10.0;
         picking_range = 50;

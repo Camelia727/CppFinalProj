@@ -25,7 +25,7 @@ protected:
 
 
 signals:
-    void role_clicked();
+    void role_clicked(QString name);
 };
 
 #endif // ROLEWIDGET_H

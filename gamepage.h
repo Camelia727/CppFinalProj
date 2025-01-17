@@ -65,7 +65,7 @@ class GamePage : public QWidget
     Q_OBJECT
 
 public:
-    explicit GamePage(History* his, DiffiLevel diffi, QWidget *parent = nullptr);
+    explicit GamePage(History* his, QString name, QWidget *parent = nullptr);
     ~GamePage();
 
 

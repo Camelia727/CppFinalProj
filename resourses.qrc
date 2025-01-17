@@ -21,6 +21,7 @@
         <file>pics/homepage.png</file>
         <file>pics/shop.png</file>
         <file>pics/itemBack.png</file>
+        <file>pics/back16_9.jpg</file>
     </qresource>
     <qresource prefix="/buffs">
         <file>pics/atkUpBuff.png</file>

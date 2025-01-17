@@ -59,14 +59,14 @@ void HomePage::openRole()
     }
 }
 
-void HomePage::openGame(DiffiLevel diffi)
+void HomePage::openGame(QString name)
 {
     qDebug() << "opengame called";
     if (game_page){
         delete game_page;
         game_page = nullptr;
     }
-    game_page = new GamePage(history, diffi);
+    game_page = new GamePage(history, name);
     connect(game_page, &GamePage::gameend, this, &HomePage::gameEnd);
     connect(game_page, &GamePage::gameexit, this, &HomePage::gameExit);
     game_page->show();

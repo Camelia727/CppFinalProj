@@ -11,12 +11,6 @@
 #include <QRandomGenerator>
 #include "history.h"
 
-enum DiffiLevel{
-    EASY = 75,
-    MEDIUM = 90,
-    HARD = 100
-};
-
 
 class Grid {
 private:
@@ -136,7 +130,6 @@ private:
     qint64 remainedtime;
 
     GameMap Map;
-    DiffiLevel difficulty;
     Status status;
     History* history;
 
@@ -162,7 +155,7 @@ public:
         DOWN,
         NONE
     };
-    GameState(History* his, DiffiLevel diffi = DiffiLevel::EASY, QObject* parent = nullptr);
+    GameState(History* his, QString name, QObject* parent = nullptr);
     ~GameState();
     int getRounds() const;
     int getCoins() const;

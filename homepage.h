@@ -36,7 +36,7 @@ protected:
 
 public slots:
     void openRole();
-    void openGame(DiffiLevel diffi);
+    void openGame(QString name);
     void openDetail();
     void openSave();
     void openShop();

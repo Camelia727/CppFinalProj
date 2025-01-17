@@ -92,11 +92,11 @@ void MoveIcon::mouseMoveEvent(QMouseEvent *event)
 
 
 
-GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
+GamePage::GamePage(History* his, QString name, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GamePage)
-    , gamestate(new GameState(history, diffi))
-    , pawn_widget(new PawnWidget(this, "Swordsman"))
+    , gamestate(new GameState(history, name))
+    , pawn_widget(new PawnWidget(this, name))
     , move_icon(new MoveIcon(this))
     , pawnMoveTimer(new QTimer(this))
     , buffpage(nullptr)

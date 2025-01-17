@@ -34,7 +34,8 @@ public:
         timer->setObjectName("timer");
         timer->setGeometry(QRect(520, 30, 80, 41));
         QFont font;
-        font.setPointSize(15);
+        font.setPointSize(18);
+        font.setBold(true);
         timer->setFont(font);
         timer->setAlignment(Qt::AlignCenter);
 
@@ -45,7 +46,7 @@ public:
 
     void retranslateUi(QWidget *GamePage)
     {
-        GamePage->setWindowTitle(QCoreApplication::translate("GamePage", "Form", nullptr));
+        GamePage->setWindowTitle(QCoreApplication::translate("GamePage", "ALIVE", nullptr));
         timer->setText(QCoreApplication::translate("GamePage", "TextLabel", nullptr));
     } // retranslateUi
 

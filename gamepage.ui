@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>ALIVE</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -34,7 +34,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <pointsize>18</pointsize>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">

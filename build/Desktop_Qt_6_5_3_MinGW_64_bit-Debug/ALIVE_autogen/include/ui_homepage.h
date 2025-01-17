@@ -52,7 +52,7 @@ public:
 
         verticalLayoutWidget_2 = new QWidget(HomePage);
         verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
-        verticalLayoutWidget_2->setGeometry(QRect(0, 210, 291, 391));
+        verticalLayoutWidget_2->setGeometry(QRect(120, 210, 291, 391));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -74,7 +74,7 @@ public:
 
     void retranslateUi(QWidget *HomePage)
     {
-        HomePage->setWindowTitle(QCoreApplication::translate("HomePage", "HomePage", nullptr));
+        HomePage->setWindowTitle(QCoreApplication::translate("HomePage", "ALIVE", nullptr));
     } // retranslateUi
 
 };

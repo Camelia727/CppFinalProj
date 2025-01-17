@@ -22,14 +22,18 @@ public:
     explicit RolePage(QWidget *parent = nullptr);
     ~RolePage();
 
+protected:
+    void paintEvent(QPaintEvent* event) override;
+
 private:
     Ui::RolePage *ui;
+    QPixmap pic;
 
 signals:
-    void gameOpen(DiffiLevel diffi);
+    void gameOpen(QString name);
 
 public slots:
-    void openGame();
+    void openGame(QString name);
 };
 
 #endif // ROLEPAGE_H

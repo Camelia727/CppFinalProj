@@ -42,19 +42,17 @@ static constexpr auto qt_meta_stringdata_CLASSRolePageENDCLASS = QtMocHelpers::s
     "RolePage",
     "gameOpen",
     "",
-    "DiffiLevel",
-    "diffi",
+    "name",
     "openGame"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSRolePageENDCLASS_t {
-    uint offsetsAndSizes[12];
+    uint offsetsAndSizes[10];
     char stringdata0[9];
     char stringdata1[9];
     char stringdata2[1];
-    char stringdata3[11];
-    char stringdata4[6];
-    char stringdata5[9];
+    char stringdata3[5];
+    char stringdata4[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSRolePageENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -63,15 +61,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSRolePageENDCLASS_t qt_meta_stri
         QT_MOC_LITERAL(0, 8),  // "RolePage"
         QT_MOC_LITERAL(9, 8),  // "gameOpen"
         QT_MOC_LITERAL(18, 0),  // ""
-        QT_MOC_LITERAL(19, 10),  // "DiffiLevel"
-        QT_MOC_LITERAL(30, 5),  // "diffi"
-        QT_MOC_LITERAL(36, 8)   // "openGame"
+        QT_MOC_LITERAL(19, 4),  // "name"
+        QT_MOC_LITERAL(24, 8)   // "openGame"
     },
     "RolePage",
     "gameOpen",
     "",
-    "DiffiLevel",
-    "diffi",
+    "name",
     "openGame"
 };
 #undef QT_MOC_LITERAL
@@ -95,13 +91,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSRolePageENDCLASS[] = {
        1,    1,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   29,    2, 0x0a,    3 /* Public */,
+       4,    1,   29,    2, 0x0a,    3 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
 
        0        // eod
 };
@@ -117,9 +113,10 @@ Q_CONSTINIT const QMetaObject RolePage::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<RolePage, std::true_type>,
         // method 'gameOpen'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<DiffiLevel, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'openGame'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
     nullptr
 } };
@@ -130,14 +127,14 @@ void RolePage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         auto *_t = static_cast<RolePage *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->gameOpen((*reinterpret_cast< std::add_pointer_t<DiffiLevel>>(_a[1]))); break;
-        case 1: _t->openGame(); break;
+        case 0: _t->gameOpen((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->openGame((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (RolePage::*)(DiffiLevel );
+            using _t = void (RolePage::*)(QString );
             if (_t _q_method = &RolePage::gameOpen; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -177,7 +174,7 @@ int RolePage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void RolePage::gameOpen(DiffiLevel _t1)
+void RolePage::gameOpen(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
