@@ -13,30 +13,30 @@ Enemy::Enemy(int id, EnemyType type, QPointF position, QObject* parent)
     case EnemyType::HAMADRYAD:
         max_hp = 200.0;
         hp = 200.0;
-        atk = 5.0;
-        spd = 10.0;
-        attack_range = 10;
+        atk = 10.0;
+        spd = 7.0;
+        attack_range = 20;
         break;
     case EnemyType::DEMON:
         max_hp = 180.0;
         hp = 180.0;
-        atk = 10.0;
-        spd = 10.0;
-        attack_range = 0;
-        break;
-    case EnemyType::MUTATEDDEMON:
-        max_hp = 250.0;
-        hp = 250.0;
-        atk = 50.0;
-        spd = 20.0;
-        attack_range = 0;
-        break;
-    case EnemyType::WIZARD:
-        max_hp = 100.0;
-        hp = 100.0;
         atk = 15.0;
         spd = 10.0;
-        attack_range = 5;
+        attack_range = 20;
+        break;
+    case EnemyType::MUTATEDDEMON:
+        max_hp = 150.0;
+        hp = 150.0;
+        atk = 40.0;
+        spd = 17.0;
+        attack_range = 20;
+        break;
+    case EnemyType::WIZARD:
+        max_hp = 200.0;
+        hp = 200.0;
+        atk = 10.0;
+        spd = 10.0;
+        attack_range = 400;
         break;
     default:
         max_hp = 100.0;

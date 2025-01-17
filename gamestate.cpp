@@ -8,8 +8,8 @@ GameMap::GameMap()
     n = 420;
     top = 250;
     left = 90;
-    blocks = {QPoint(500,500),QPoint(450,650),QPoint(550,550),
-                QPoint(550,330),QPoint(620,400),QPoint(650,250)};
+    blocks = {QPoint(180,390),QPoint(320,600),QPoint(450,400),
+                QPoint(550,550),QPoint(800,450),QPoint(680,550)};
 }
 
 QSize GameMap::getSize()
@@ -548,21 +548,21 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
 {
     switch (type){
     case RoleType::SWORDSMAN:
-        max_hp = 100.0;
-        atk = 1000.0;
+        max_hp = 400.0;
+        atk = 55.0;
         atp = 1.0;
         spd = 10.0;
-        picking_range = 50;
-        attack_range = 500;
+        picking_range = 100;
+        attack_range = 150;
         pic.load(":/pawn/pics/swordsman.png");
         break;
     case RoleType::MAGICIAN:
-        max_hp = 700.0;
-        atk = 1500.0;
+        max_hp = 150.0;
+        atk = 25.0;
         atp = 1.0;
-        spd = 10.0;
-        picking_range = 400;
-        attack_range = 5;
+        spd = 20.0;
+        picking_range = 100;
+        attack_range = 500;
         pic.load(":/pawn/pics/magician.png");
         break;
     default:

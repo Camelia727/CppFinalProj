@@ -102,7 +102,7 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     , buffpage(nullptr)
     , pausepage(nullptr)
     , history(his)
-    , keyPressed(QList<bool>(256, false))
+    , keyPressed(QList<bool>(500, false))
     // , player(new QMediaPlayer(this))
 {
     // setWindowFlag(Qt::FramelessWindowHint); // 边框隐藏
@@ -174,7 +174,9 @@ void GamePage::paintEvent(QPaintEvent *event)
 
 void GamePage::keyPressEvent(QKeyEvent *event)
 {
-    if (gamestate->getStatus() != Status::GAMEON){
+    if (event->modifiers() & Qt::ControlModifier)
+        event->ignore();
+    else if (gamestate->getStatus() != Status::GAMEON){
         keyPressed.fill(false);
         event->ignore();
     }
@@ -195,7 +197,9 @@ void GamePage::keyPressEvent(QKeyEvent *event)
 
 void GamePage::keyReleaseEvent(QKeyEvent *event)
 {
-    if (gamestate->getStatus() != Status::GAMEON){
+    if (event->modifiers() & Qt::ControlModifier)
+        event->ignore();
+    else if (gamestate->getStatus() != Status::GAMEON){
         keyPressed.fill(false);
         event->ignore();
     }
