@@ -105,6 +105,7 @@ public:
     int getLevel() const {return level;}
     int getAtkRange() const {return attack_range;}
     int getAtkSpeed() const {return atp;}
+    int getRevive() const {return revive;}
     int getPickingRg() const {return picking_range;}
     double getSpd() const {return spd;}
     double getHp() const {return hp;}
@@ -165,6 +166,7 @@ public:
     ~GameState();
     int getRounds() const;
     int getCoins() const;
+    int getRevive() const {return Pawn->getRevive();}
     Status getStatus() const;
     QPointF generateEdgePoint();
     int getDistance(Enemy* enemy) const;

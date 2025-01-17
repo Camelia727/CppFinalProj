@@ -547,7 +547,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     switch (type){
     case RoleType::SWORDSMAN:
         max_hp = 100.0;
-        atk = 30.0;
+        atk = 10.0;
         atp = 1.0;
         spd = 10.0;
         picking_range = 50;
@@ -583,8 +583,15 @@ void Pawn::beHurt(double dmg)
 {
     qDebug() << "current pawn hp : " << hp;
     if (hp-dmg <= 0){
-        hp = 0;
-        emit pawnDead();
+        if (revive > 0){
+            revive--;
+            hp = max_hp * revive_recover;
+            qDebug() << "remaining revive:" << revive;
+        }
+        else{
+            hp = 0;
+            emit pawnDead();
+        }
     }
     else
         hp -= dmg;

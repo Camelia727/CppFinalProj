@@ -53,4 +53,7 @@
         <file>pics/magician.png</file>
         <file>pics/swordsman.png</file>
     </qresource>
+    <qresource prefix="/music">
+        <file>music/Camelia - Mili.mp3</file>
+    </qresource>
 </RCC>

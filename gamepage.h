@@ -5,6 +5,8 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QVBoxLayout>
+#include <QtCore/QCoreApplication>
+#include <QtMultimedia/QMediaPlayer>
 #include "gamestate.h"
 #include "gamelosebox.h"
 #include "history.h"
@@ -68,6 +70,7 @@ public:
 
 
 private:
+    QPixmap revive;
     QPixmap background;
     QPixmap enemybloodbar;
     QPixmap pawnbloodbar_outer;
@@ -85,6 +88,7 @@ private:
     QPoint diff_; // 鼠标拖动事件
     QTimer* pawnMoveTimer;
     QList<bool> keyPressed;
+    QMediaPlayer* player;
 
 protected:
     void paintEvent(QPaintEvent* event) override;

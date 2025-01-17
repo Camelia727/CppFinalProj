@@ -12,6 +12,7 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46
   F:/QTproj/ALIVE/rolepage.h \
   F:/QTproj/ALIVE/rolewidget.h \
   F:/QTproj/ALIVE/shoppage.h \
+  F:/Qt/6.5.3/mingw_64/include/QtCore/QCoreApplication \
   F:/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
   F:/Qt/6.5.3/mingw_64/include/QtCore/QList \
   F:/Qt/6.5.3/mingw_64/include/QtCore/QObject \
@@ -50,10 +51,13 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46
   F:/Qt/6.5.3/mingw_64/include/QtCore/qcontainerinfo.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qcontainertools_impl.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qcontiguouscache.h \
+  F:/Qt/6.5.3/mingw_64/include/QtCore/qcoreapplication.h \
+  F:/Qt/6.5.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qcoreevent.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  F:/Qt/6.5.3/mingw_64/include/QtCore/qeventloop.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \
@@ -76,6 +80,7 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46
   F:/Qt/6.5.3/mingw_64/include/QtCore/qmargins.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qmath.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qmetacontainer.h \
+  F:/Qt/6.5.3/mingw_64/include/QtCore/qmetaobject.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qminmax.h \
   F:/Qt/6.5.3/mingw_64/include/QtCore/qnamespace.h \
@@ -183,6 +188,13 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46
   F:/Qt/6.5.3/mingw_64/include/QtGui/qvectornd.h \
   F:/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
   F:/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/QMediaPlayer \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qaudio.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qmediaenumdebug.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
   F:/Qt/6.5.3/mingw_64/include/QtWidgets/QHBoxLayout \
   F:/Qt/6.5.3/mingw_64/include/QtWidgets/QMessageBox \
   F:/Qt/6.5.3/mingw_64/include/QtWidgets/QTextEdit \

@@ -103,6 +103,7 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     , pausepage(nullptr)
     , history(his)
     , keyPressed(QList<bool>(256, false))
+    // , player(new QMediaPlayer(this))
 {
     // setWindowFlag(Qt::FramelessWindowHint); // 边框隐藏
     // setWindowFlags (windowFlags () | Qt::WindowStaysOnTopHint); // 将该页面置顶
@@ -112,6 +113,7 @@ GamePage::GamePage(History* his, DiffiLevel diffi, QWidget *parent)
     ui->timer->setText("60");
     ui->timer->setStyleSheet("color:rgba(255,255,255,255)");
     map = gamestate->getMap();
+    revive.load(":/buffs/pics/revivebuff.png");
     background.load(":/pics/pics/background.png");
     enemybloodbar.load(":/pics/pics/bloodbar.png");
     pawnbloodbar_inner.load(":/pics/pics/pawnbloodbar_inner.png");
@@ -165,6 +167,9 @@ void GamePage::paintEvent(QPaintEvent *event)
     Pawnpainter.drawPixmap(gamestate->getPawnPos().x(), gamestate->getPawnPos().y(), 40, 70, gamestate->getPawnPixmap());
     Pawnpainter.drawPixmap(QRect(20,20,300*gamestate->getPawnHpPercent(), 40), pawnbloodbar_inner);
     Pawnpainter.drawPixmap(QRect(20,20,300,40), pawnbloodbar_outer);
+    for (int i = 0; i < gamestate->getRevive(); i++){
+        Pawnpainter.drawPixmap(QRect(20+50*i, 70, 50,50), revive);
+    }
 }
 
 void GamePage::keyPressEvent(QKeyEvent *event)
