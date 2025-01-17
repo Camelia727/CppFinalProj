@@ -284,14 +284,23 @@ void GameState::EnemyDead(Enemy *enemy)
         }
     }
     Pawn->gainExp(5);
-    if (name == "demon"){
+    if (name == "hamadryad"){
+        coins += 1;
+    }
+    else if (name == "wizard"){
+        coins += 2;
+    }
+    else if (name == "demon"){
+        coins += 5;
         if (QRandomGenerator::global()->bounded(100) < 50)
             Falling(pos);
     }
     else if (name == "mutateddemon"){
+        coins += 10;
         if (QRandomGenerator::global()->bounded(100) < 70)
             Falling(pos);
     }
+    emit coinsUpdate();
 }
 
 void GameState::gainBuff(int buff)
@@ -544,6 +553,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     , revive_recover(0.3)
     , level(0)
     , exp(0)
+    , coinX(1)
     , QObject{parent}
 {
     switch (type){
@@ -574,7 +584,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     atk *= 1+history->getbuff(static_cast<BUFFS>(1))*0.06;
     atp *= 1/(1+history->getbuff(static_cast<BUFFS>(2))*0.05);
     spd *= 1+history->getbuff(static_cast<BUFFS>(3))*0.05;
-    coin *= 1+history->getbuff(static_cast<BUFFS>(4))*0.2;
+    coinX *= 1+history->getbuff(static_cast<BUFFS>(4))*0.2;
     revive = history->getbuff(static_cast<BUFFS>(5))/3;
     revive_recover *= history->getbuff(static_cast<BUFFS>(5))/3;
 
@@ -629,7 +639,7 @@ void Pawn::gainBuff(int buff)
         spd *= 1.15;
         break;
     case 5:
-        coin *= 1.15;
+        coinX += 0.15;
         break;
     default:
         break;

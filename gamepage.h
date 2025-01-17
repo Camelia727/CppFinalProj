@@ -119,6 +119,7 @@ public slots:
     void pausegoon() {gamestate->setStatus(Status::GAMEON);}
 
     void secUpdate(int time);       // 每秒更新计时器
+    void coinUpdate();              // 更新金币计数器
 };
 
 #endif // GAMEPAGE_H

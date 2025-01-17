@@ -112,6 +112,7 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     ui->setupUi(this);
     ui->timer->setText("60");
     ui->timer->setStyleSheet("color:rgba(255,255,255,255)");
+    ui->coins->setStyleSheet("color:rgba(255,215,0,255);");
     map = gamestate->getMap();
     revive.load(":/buffs/pics/revivebuff.png");
     background.load(":/pics/pics/background.png");
@@ -135,6 +136,7 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     connect(gamestate, &GameState::levelup, this, &GamePage::buffPageOpen);
 
     connect(gamestate, &GameState::sec, this, &GamePage::secUpdate);
+    connect(gamestate, &GameState::coinsUpdate, this, &GamePage::coinUpdate);
 
     qDebug() << "gamepage init";
 
@@ -213,7 +215,7 @@ void GamePage::closeEvent(QCloseEvent *event)
 {
     int rounds = gamestate->getRounds();
     int coins = gamestate->getCoins();
-    history->gainCoins(coins);
+    history->gainCoins(coins * gamestate->getCoinX());
     emit gameend(rounds);
     qDebug() << "gamepage closeevent";
     event->accept();
@@ -305,6 +307,12 @@ void GamePage::buffsel(int buff)
 void GamePage::secUpdate(int time)
 {
     ui->timer->setText(QString::number(time));
+    update();
+}
+
+void GamePage::coinUpdate()
+{
+    ui->coins->setText("金币："+QString::number(gamestate->getCoins()));
     update();
 }
 

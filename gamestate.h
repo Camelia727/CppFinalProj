@@ -73,7 +73,8 @@ private:
     double spd;
     int picking_range;
     int attack_range;
-    double coin;
+    int coin;
+    double coinX;
     int revive;
     double revive_recover;
     int level;
@@ -101,6 +102,7 @@ public:
     int getAtkSpeed() const {return atp;}
     int getRevive() const {return revive;}
     int getPickingRg() const {return picking_range;}
+    double getCoinX() const {return coinX;}
     double getSpd() const {return spd;}
     double getHp() const {return hp;}
     double getMaxHp() const {return max_hp;}
@@ -160,6 +162,7 @@ public:
     int getRounds() const;
     int getCoins() const;
     int getRevive() const {return Pawn->getRevive();}
+    double getCoinX() const {return Pawn->getCoinX();}
     Status getStatus() const;
     QPointF generateEdgePoint();
     int getDistance(Enemy* enemy) const;
@@ -188,6 +191,7 @@ signals:
     void gameLose();
     void falling(QPointF pos);
     void sec(int time);
+    void coinsUpdate();
 
 public slots:
     void secUpdate();
