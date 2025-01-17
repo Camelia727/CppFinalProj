@@ -28,6 +28,8 @@ protected:
 private:
     Ui::RolePage *ui;
     QPixmap pic;
+    QPixmap swordedit;
+    QPixmap magiedit;
 
 signals:
     void gameOpen(QString name);
