@@ -273,7 +273,6 @@ void GamePage::gameWin()
 
 void GamePage::gameEnd()
 {
-    qDebug() << "game end";
     update();
     GameLoseBox* losebox = new GameLoseBox(this);
     losebox->setGeometry(360,200,400,300);

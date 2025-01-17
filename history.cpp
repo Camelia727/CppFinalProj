@@ -13,6 +13,5 @@ History::History(QObject *parent)
 void History::HistoryUpdate(int new_count)
 {
     gamecount++;
-    maxrounds = std::max(maxrounds, new_count);
-    qDebug() << "you have played " << gamecount << " times, with a maxRounds: " << maxrounds;
+    maxrounds = std::min(maxrounds, new_count);
 }

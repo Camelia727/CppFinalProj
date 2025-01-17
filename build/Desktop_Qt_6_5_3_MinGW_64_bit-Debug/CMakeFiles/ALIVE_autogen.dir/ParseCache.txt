@@ -2849,6 +2849,8 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/QTproj/ALIVE/shoppage.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QCoreApplication
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QDebug
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QDir
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QFile
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QList
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QObject
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QPair
@@ -2858,6 +2860,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QSize
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QSizeF
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QString
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QTextStream
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/QTimer
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h
@@ -2876,6 +2879,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qbytearrayalgorithms.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qbytearraylist.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qbytearrayview.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qcalendar.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qchar.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qcompare.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qcompare_impl.h
@@ -2891,9 +2895,14 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qcoreevent.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qdatetime.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qdir.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qeventloop.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qfile.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qfiledevice.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qfileinfo.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qflags.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qforeach.h
@@ -2909,6 +2918,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qiterator.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qline.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qlist.h
+ mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qlocale.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qlogging.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qmalloc.h
  mdp:F:/Qt/6.5.3/mingw_64/include/QtCore/qmap.h
@@ -3064,10 +3074,13 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocator.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_base.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_lockfree_defines.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/char_traits.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/charconv.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/codecvt.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/concept_check.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cpp_type_traits.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_forced.h
@@ -3077,6 +3090,10 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_defines.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_ptr.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_dir.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_fwd.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_ops.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_path.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functexcept.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functional_hash.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hash_bytes.h
@@ -3084,19 +3101,27 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable_policy.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ios_base.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/list.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_classes.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_classes.tcc
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_conv.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets.tcc
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/localefwd.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/memoryfwd.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/move.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/nested_exception.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream_insert.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/postypes.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/predefined_ops.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ptr_traits.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/quoted_string.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/range_access.h
@@ -3105,6 +3130,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr_atomic.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr_base.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/specfun.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_abs.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algo.h
@@ -3142,6 +3168,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/clocale
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/codecvt
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdio
@@ -3149,6 +3176,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstring
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cwchar
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cwctype
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/debug/assertions.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/debug/debug.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/exception
@@ -3160,23 +3188,30 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/numeric_traits.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/string_conversions.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/type_traits.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/filesystem
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/initializer_list
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ios
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iosfwd
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iterator
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/locale
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/map
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/memory
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/new
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/numeric
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/optional
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ostream
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/execution_defs.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_algorithm_defs.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_memory_defs.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_numeric_defs.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/random
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdexcept
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdlib.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/streambuf
@@ -3207,11 +3242,15 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/opt_random.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h
+ mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/emmintrin.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mm_malloc.h
  mdp:F:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mmintrin.h
@@ -3256,6 +3295,7 @@ F:/QTproj/ALIVE/homepage.h
  mdp:F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h
  mdp:F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
+ mdp:F:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wctype.h
 F:/QTproj/ALIVE/mybutton.h
  mmc:Q_OBJECT
  mdp:F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/moc_predefs.h

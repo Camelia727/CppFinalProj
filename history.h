@@ -30,8 +30,11 @@ public:
     double getbuff(const BUFFS buff) const {return buffs[buff];}
     void gainCoins(const int coin) {coins += coin;}
     void spendCoins(const int coin) {coins = coins - coin >= 0 ? coins - coin : 0;}
-    void gainBuff(const BUFFS buff) {if (buffs[buff] < 5) buffs[buff]++;
-        /*qDebug() << "gain a buff with ID:" << QString::number(buff) << "curbuffLevel:" << QString::number(buffs[buff]);*/}
+    void gainBuff(const BUFFS buff) {if (buffs[buff] < 5) buffs[buff]++;}
+    void setGamecount(int count) {gamecount = count;}
+    void setMaxrounds(int round) {maxrounds = round;}
+    void setBuffs(int buff, int level) {buffs[buff] = level;}
+    void setCoins(int coin) {coins = coin;}
 
 signals:
 

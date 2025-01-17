@@ -1,0 +1,9 @@
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/ALIVE.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/edit_cache.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/rebuild_cache.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/list_install_components.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/install.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/install/local.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/install/strip.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/ALIVE_autogen_timestamp_deps.dir
+F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/CMakeFiles/ALIVE_autogen.dir

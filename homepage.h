@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
+#include <QDir>
 #include <rolepage.h>
 #include <mybutton.h>
 #include "shoppage.h"
@@ -22,6 +25,9 @@ class HomePage : public QWidget
 public:
     HomePage(QWidget *parent = nullptr);
     ~HomePage();
+    void saveHistory() const;
+    void loadHistory() const;
+    void clearHistory() const;
 
 private:
     Ui::HomePage *ui;
