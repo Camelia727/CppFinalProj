@@ -111,7 +111,7 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     setFixedSize(1120,760);
 
     ui->setupUi(this);
-    ui->timer->setText("60");
+    ui->timer->setText("120");
     ui->timer->setStyleSheet("color:rgba(255,255,255,255)");
     ui->coins->setStyleSheet("color:rgba(255,215,0,255);");
     player->setAudioOutput(audio);

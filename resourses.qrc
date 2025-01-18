@@ -3,14 +3,9 @@
         <file>pics/saveBtn.png</file>
         <file>pics/detailBtn.png</file>
         <file>pics/gameBtn.png</file>
-        <file>pics/exitBtn.png</file>
         <file>pics/shopBtn.png</file>
-        <file>pics/gird.png</file>
         <file>pics/block.png</file>
-        <file>pics/edge.png</file>
         <file>pics/background.png</file>
-        <file>pics/moveicon.png</file>
-        <file>pics/moveicon_1.png</file>
         <file>pics/hamadryad.png</file>
         <file>pics/bloodbar.png</file>
         <file>pics/demon.png</file>
@@ -46,7 +41,6 @@
     </qresource>
     <qresource prefix="/falling">
         <file>pics/fallingexp.png</file>
-        <file>pics/fallingfood.jpg</file>
         <file>pics/fallinggold.png</file>
         <file>pics/fallingfood.png</file>
     </qresource>
@@ -59,5 +53,10 @@
     <qresource prefix="/music">
         <file>music/gamemusic.mp3</file>
         <file>music/homemusic.mp3</file>
+    </qresource>
+    <qresource prefix="/leading">
+        <file>pics/leading1.png</file>
+        <file>pics/leading2.png</file>
+        <file>pics/leading3.png</file>
     </qresource>
 </RCC>

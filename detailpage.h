@@ -15,8 +15,18 @@ public:
     explicit DetailPage(QWidget *parent = nullptr);
     ~DetailPage();
 
+protected:
+    void paintEvent(QPaintEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent* event) override;
+
 private:
     Ui::DetailPage *ui;
+    int cur;
+    QList<QPixmap> pics;
+
+signals:
+    void exit();
+
 };
 
 #endif // DETAILPAGE_H

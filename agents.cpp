@@ -15,21 +15,21 @@ Enemy::Enemy(int id, EnemyType type, QPointF position, QObject* parent)
         hp = 200.0;
         atk = 10.0;
         spd = 7.0;
-        attack_range = 20;
+        attack_range = 50;
         break;
     case EnemyType::DEMON:
         max_hp = 180.0;
         hp = 180.0;
         atk = 15.0;
         spd = 10.0;
-        attack_range = 20;
+        attack_range = 80;
         break;
     case EnemyType::MUTATEDDEMON:
         max_hp = 150.0;
         hp = 150.0;
         atk = 40.0;
         spd = 17.0;
-        attack_range = 20;
+        attack_range = 50;
         break;
     case EnemyType::WIZARD:
         max_hp = 200.0;

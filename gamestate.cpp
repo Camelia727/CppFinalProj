@@ -59,7 +59,7 @@ GameState::GameState(History* his, QString name, QObject* parent)
     enemyUpdateTimer->start(1500);
     pawnAttackTimer->start(800);
     pawnMoveTimer->start(100);
-    roundTimer->start(60000);
+    roundTimer->start(120000);
 
     //*******游戏状态の信号与槽*******
     connect(Pawn, &Pawn::pawnDead, this, &GameState::GameLose);
@@ -419,6 +419,7 @@ void GameState::pickItem(int type)
     switch (type){
     case 1:
         coins += 100;
+        emit coinsUpdate();
         break;
     case 2:
         Pawn->recoverHp(Pawn->getMaxHp()*0.25);
@@ -571,7 +572,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     spd *= 1+history->getbuff(static_cast<BUFFS>(3))*0.05;
     coinX *= 1+history->getbuff(static_cast<BUFFS>(4))*0.2;
     revive = history->getbuff(static_cast<BUFFS>(5))/3;
-    revive_recover *= 1+history->getbuff(static_cast<BUFFS>(5))/3;
+    revive_recover *= 1+history->getbuff(static_cast<BUFFS>(5))*0.15;
 }
 
 void Pawn::beHurt(double dmg)
