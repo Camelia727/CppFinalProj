@@ -2,6 +2,7 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/EWIEGA46
   F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/ALIVE_autogen/moc_predefs.h \
   F:/QTproj/ALIVE/agents.h \
   F:/QTproj/ALIVE/buffpage.h \
+  F:/QTproj/ALIVE/detailpage.h \
   F:/QTproj/ALIVE/gamelosebox.h \
   F:/QTproj/ALIVE/gamepage.h \
   F:/QTproj/ALIVE/gamepausepage.h \

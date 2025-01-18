@@ -5,7 +5,7 @@ History::History(QObject *parent)
     : QObject{parent}
     , gamecount(0)
     , maxrounds(0)
-    , coins(5000)
+    , coins(0)
 {
     buffs = QList<double>(6, 0);
 }

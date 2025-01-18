@@ -2,13 +2,13 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/ALIVE_autogen/EWIEGA
   F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/ALIVE_autogen/moc_predefs.h \
   F:/QTproj/ALIVE/agents.h \
   F:/QTproj/ALIVE/buffpage.h \
+  F:/QTproj/ALIVE/detailpage.h \
   F:/QTproj/ALIVE/gamelosebox.h \
   F:/QTproj/ALIVE/gamepage.h \
   F:/QTproj/ALIVE/gamepausepage.h \
   F:/QTproj/ALIVE/gamestate.h \
   F:/QTproj/ALIVE/history.h \
   F:/QTproj/ALIVE/mybutton.h \
-  F:/QTproj/ALIVE/roleedit.h \
   F:/QTproj/ALIVE/rolepage.h \
   F:/QTproj/ALIVE/rolewidget.h \
   F:/QTproj/ALIVE/shoppage.h \
@@ -198,8 +198,10 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/ALIVE_autogen/EWIEGA
   F:/Qt/6.5.3/mingw_64/include/QtGui/qvectornd.h \
   F:/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
   F:/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/QAudioOutput \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/QMediaPlayer \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qaudio.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qaudiooutput.h \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qmediaenumdebug.h \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \

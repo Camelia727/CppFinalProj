@@ -11,26 +11,6 @@
 #include <QRandomGenerator>
 #include "history.h"
 
-
-class Grid {
-private:
-    int style;
-    QPixmap pic;
-    QList<Enemy*> enemyList;
-public:
-    enum Style : int{
-        PATH,
-        BLOCK
-    };
-    Grid(Style s = Grid::PATH);
-    QPixmap getPic();
-    QList<Enemy*> getEnemyList();
-    int getEnemyCnt();
-    bool isBlock() const;
-    void addEnemy(Enemy* enemy);
-    void removeEnemy(Enemy* enemy);
-};
-
 class GameMap{
 private:
     int m, n, top, left;
@@ -43,9 +23,6 @@ public:
     int getRight() const {return left+m;}
     QSize getSize();
     QList<QPoint> get_blocks();
-    void importMap(QString fileName);
-    void exportMap();
-
 };
 
 class FallingObject : public QObject {
@@ -114,6 +91,7 @@ public:
 signals:
     void pawnDead();
     void levelup();
+    void atpChange();
 };
 
 enum class Status{
@@ -202,6 +180,7 @@ public slots:
     void EnemyUpdate();
     void PawnAttack();
     void PawnLevelUp();
+    void PawnAtpUp();
     void pawnMoving() {emit pawnmoving();}
     void GameWin();
     void GameLose();

@@ -8,7 +8,7 @@ GameMap::GameMap()
     n = 420;
     top = 250;
     left = 90;
-    blocks = {QPoint(180,390),QPoint(320,600),QPoint(450,400),
+    blocks = {QPoint(180,390),QPoint(320,550),QPoint(450,400),
                 QPoint(550,550),QPoint(800,450),QPoint(680,550)};
 }
 
@@ -66,9 +66,7 @@ GameState::GameState(History* his, QString name, QObject* parent)
 
     //*******角色升级******
     connect(Pawn, &Pawn::levelup, this, &GameState::PawnLevelUp);
-
-    qDebug() << history->getbuff(static_cast<BUFFS>(0));
-
+    connect(Pawn, &Pawn::atpChange, this, &GameState::PawnAtpUp);
 }
 
 GameState::~GameState()
@@ -86,7 +84,6 @@ GameState::~GameState()
     delete enemyMoveTimer;
     delete enemyAttackTimer;
     delete pawnAttackTimer;
-    qDebug() << "gamestate delete";
 }
 
 int GameState::getRounds() const
@@ -118,25 +115,24 @@ QPointF GameState::generateEdgePoint()
 
     switch (edge) {
     case TOP:
-        y = 250;
-        x = QRandomGenerator::global()->bounded(90, 90+Map.getSize().width());
+        y = Map.getTop() + 1;
+        x = QRandomGenerator::global()->bounded(Map.getLeft()+1, Map.getRight()-51);
         break;
     case DOWN:
-        y = Map.getSize().height()-90;
-        x = QRandomGenerator::global()->bounded(90, Map.getSize().width()+90);
+        y = Map.getBottom() - 51;
+        x = QRandomGenerator::global()->bounded(Map.getLeft()+1, Map.getRight()-51);
         break;
     case LEFT:
-        x = 90;
-        y = QRandomGenerator::global()->bounded(250, Map.getSize().height()+250);
+        x = Map.getLeft() + 1;
+        y = QRandomGenerator::global()->bounded(Map.getTop()+1, Map.getBottom()-51);
         break;
     case RIGHT:
-        x = Map.getSize().width()-90;
-        y = QRandomGenerator::global()->bounded(250, Map.getSize().height()+250);
+        x = Map.getRight()-51;
+        y = QRandomGenerator::global()->bounded(Map.getTop()+1, Map.getBottom()-51);
         break;
     default:
         break;
     }
-    // qDebug() << "edge:" << edge << ", generate a point at (" << x << "," << y << ")";
     return QPoint(x, y);
 }
 
@@ -198,7 +194,6 @@ QPointF GameState::EnemyDirection(Enemy* enemy) {
         if (!collides)
             return dir;
         else{
-            qDebug() << "demon collides, change dir";
             dir = PawnPos - enemy->getPos();
             double sum = pow(dir.x(), 2) + pow(dir.y(), 2);
             dir.rx() /= sqrt(sum);
@@ -295,7 +290,6 @@ void GameState::PawnMove(QPointF direction)
             delete item;
         }
     }
-    // qDebug() << "position " << PawnPos.x() << "," << PawnPos.y();
 }
 
 void GameState::EnemyCreate(EnemyType enemy_type, QPointF pos)
@@ -305,27 +299,22 @@ void GameState::EnemyCreate(EnemyType enemy_type, QPointF pos)
     case EnemyType::HAMADRYAD:
         delete new_enemy;
         new_enemy = new Hamadryad(id, pos);
-        // qDebug() << "new hamadryad";
         break;
     case EnemyType::DEMON:
         delete new_enemy;
         new_enemy = new Demon(id, pos);
-        // qDebug() << "new demon";
         break;
     case EnemyType::MUTATEDDEMON:
         delete new_enemy;
         new_enemy = new MutatedDemon(id, pos);
-        // qDebug() << "new mutateddemon";
         break;
     case EnemyType::WIZARD:
         delete new_enemy;
         new_enemy = new Wizard(id, pos);
-        // qDebug() << "new wizard";
         break;
     default:
         break;
     }
-    // qDebug() << "current id : " << id;
     EnemyList.append(new_enemy);
     connect(new_enemy, &Enemy::enemyDead, this, &GameState::EnemyDead);
 }
@@ -333,7 +322,6 @@ void GameState::EnemyCreate(EnemyType enemy_type, QPointF pos)
 void GameState::EnemyMove(Enemy *enemy)
 {
     QPointF direction = EnemyDirection(enemy);
-    // qDebug() << "direction : " << direction.x() << "," << direction.y();
     enemy->move(direction);
 }
 
@@ -390,7 +378,6 @@ void GameState::setStatus(Status statu)
         break;
     case Status::GAMEOFF:
         if (status == Status::GAMEON){
-            qDebug() << "status change";
             status = statu;
             remainedtime = 30000;
             roundTimer->setInterval(30000);
@@ -405,7 +392,6 @@ void GameState::setStatus(Status statu)
         break;
     case Status::GAMETMP:
         if (status == Status::GAMEON){
-            qDebug() << "status change";
             status = statu;
             remainedtime = roundTimer->remainingTime();
             secTimer->stop();
@@ -426,12 +412,10 @@ void GameState::Falling(QPointF pos)
 {
     FallingObject* item = new FallingObject(QRandomGenerator::global()->bounded(9)/3+1, pos);
     FallingList.append(item);
-    qDebug() << "Falling something:" << item->getType();
 }
 
 void GameState::pickItem(int type)
 {
-    qDebug() << "picking";
     switch (type){
     case 1:
         coins += 100;
@@ -464,13 +448,11 @@ void GameState::GameUpdate()
 void GameState::EnemyAttack()
 {
     if (Pawn->isBleeding()) {
-        qDebug() << "bleeding";
         Pawn->beHurt(10);
     }
     for (Enemy* enemy : EnemyList){
         if (Pawn->isDead()) break;
         if (getDistance(enemy) <= enemy->getAtkRange()){
-            qDebug() << "enemy atk : " << enemy->getATK();
             Pawn->beHurt(enemy->getATK());
         }
     }
@@ -506,6 +488,12 @@ void GameState::PawnLevelUp()
     emit levelup();
 }
 
+void GameState::PawnAtpUp()
+{
+    pawnAttackTimer->stop();
+    pawnAttackTimer->start(Pawn->getAtkSpeed());
+}
+
 void GameState::GameWin()
 {
     setStatus(Status::GAMEOFF);
@@ -522,73 +510,6 @@ void GameState::GameStateChange(Status nxt_status)
 {
     setStatus(nxt_status);
 }
-
-
-void GameMap::importMap(QString fileName)
-{
-
-}
-
-void GameMap::exportMap()
-{
-
-}
-
-Grid::Grid(Style s)
-    : style(s)
-    , enemyList({})
-{
-    switch (s) {
-    case PATH:
-        pic.load(":/pics/pics/gird.png");
-        break;
-    case BLOCK:
-        pic.load(":/pics/pics/block.png");
-        break;
-    default:
-        break;
-    }
-}
-
-QPixmap Grid::getPic()
-{
-    return pic;
-}
-
-QList<Enemy *> Grid::getEnemyList()
-{
-    return enemyList;
-}
-
-int Grid::getEnemyCnt()
-{
-    return enemyList.size();
-}
-
-bool Grid::isBlock() const
-{
-    return style == BLOCK;
-}
-
-void Grid::addEnemy(Enemy *enemy)
-{
-    enemyList.append(enemy);
-    // qDebug() << "add enemy grid at (" << enemy->getPos().x() << "," << enemy->getPos().y() << ") have " << enemyList.size() << "enemies";
-    // qDebug() << "enemy id : " << enemyList[0]->getId();
-}
-
-void Grid::removeEnemy(Enemy *enemy)
-{
-    // qDebug() << "grid at (" << enemy->getPos().x() << "," << enemy->getPos().y() << ") remove enemy with id " << enemy->getId();
-    for (int i = 0; i < enemyList.size(); i++){
-        if (enemyList.at(i)->getId() == enemy->getId()){
-            enemyList.removeAt(i);
-            break;
-        }
-    }
-}
-
-
 
 FallingObject::FallingObject(int t, QPointF pos)
     : type(t)
@@ -625,7 +546,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     case RoleType::SWORDSMAN:
         max_hp = 400.0;
         atk = 55.0;
-        atp = 1.0;
+        atp = 1000.0;
         spd = 10.0;
         picking_range = 100;
         attack_range = 150;
@@ -634,7 +555,7 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     case RoleType::MAGICIAN:
         max_hp = 150.0;
         atk = 25.0;
-        atp = 1.0;
+        atp = 800.0;
         spd = 20.0;
         picking_range = 100;
         attack_range = 500;
@@ -643,27 +564,22 @@ Pawn::Pawn(History* his, RoleType type, QObject* parent)
     default:
         break;
     }
-    qDebug() << history->getbuff(static_cast<BUFFS>(0));
     max_hp *= 1+history->getbuff(static_cast<BUFFS>(0))*0.1;
     hp = max_hp;
     atk *= 1+history->getbuff(static_cast<BUFFS>(1))*0.06;
-    atp *= 1/(1+history->getbuff(static_cast<BUFFS>(2))*0.05);
+    atp *= 1-history->getbuff(static_cast<BUFFS>(2))*0.05;
     spd *= 1+history->getbuff(static_cast<BUFFS>(3))*0.05;
     coinX *= 1+history->getbuff(static_cast<BUFFS>(4))*0.2;
     revive = history->getbuff(static_cast<BUFFS>(5))/3;
-    revive_recover *= history->getbuff(static_cast<BUFFS>(5))/3;
-
-    qDebug() << max_hp << " " << atk << " " << atp << " " << spd << " " << revive << " " << revive_recover;
+    revive_recover *= 1+history->getbuff(static_cast<BUFFS>(5))/3;
 }
 
 void Pawn::beHurt(double dmg)
 {
-    qDebug() << "current pawn hp : " << hp;
     if (hp-dmg <= 0){
         if (revive > 0){
             revive--;
             hp = max_hp * revive_recover;
-            qDebug() << "remaining revive:" << revive;
         }
         else{
             hp = 0;
@@ -686,13 +602,13 @@ void Pawn::attack(Enemy *enemy)
 
 void Pawn::gainBuff(int buff)
 {
-    qDebug() << "gain buff " << buff;
     switch (buff){
     case 0:
         atk *= 1.15;
         break;
     case 1:
-        atp *= 1.15;
+        atp *= 0.85;
+        emit atpChange();
         break;
     case 2:
         revive++;

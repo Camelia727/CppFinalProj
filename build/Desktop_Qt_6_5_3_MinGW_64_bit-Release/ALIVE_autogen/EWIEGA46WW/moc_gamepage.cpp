@@ -219,7 +219,6 @@ static constexpr auto qt_meta_stringdata_CLASSGamePageENDCLASS = QtMocHelpers::s
     "gameend",
     "",
     "rounds",
-    "gameexit",
     "closed",
     "iconPressEvent",
     "p",
@@ -240,29 +239,28 @@ static constexpr auto qt_meta_stringdata_CLASSGamePageENDCLASS = QtMocHelpers::s
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSGamePageENDCLASS_t {
-    uint offsetsAndSizes[44];
+    uint offsetsAndSizes[42];
     char stringdata0[9];
     char stringdata1[8];
     char stringdata2[1];
     char stringdata3[7];
-    char stringdata4[9];
-    char stringdata5[7];
-    char stringdata6[15];
-    char stringdata7[2];
-    char stringdata8[18];
-    char stringdata9[14];
-    char stringdata10[9];
-    char stringdata11[16];
+    char stringdata4[7];
+    char stringdata5[15];
+    char stringdata6[2];
+    char stringdata7[18];
+    char stringdata8[14];
+    char stringdata9[9];
+    char stringdata10[16];
+    char stringdata11[8];
     char stringdata12[8];
     char stringdata13[8];
-    char stringdata14[8];
-    char stringdata15[13];
-    char stringdata16[8];
-    char stringdata17[5];
+    char stringdata14[13];
+    char stringdata15[8];
+    char stringdata16[5];
+    char stringdata17[10];
     char stringdata18[10];
-    char stringdata19[10];
-    char stringdata20[5];
-    char stringdata21[11];
+    char stringdata19[5];
+    char stringdata20[11];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSGamePageENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -272,30 +270,28 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGamePageENDCLASS_t qt_meta_stri
         QT_MOC_LITERAL(9, 7),  // "gameend"
         QT_MOC_LITERAL(17, 0),  // ""
         QT_MOC_LITERAL(18, 6),  // "rounds"
-        QT_MOC_LITERAL(25, 8),  // "gameexit"
-        QT_MOC_LITERAL(34, 6),  // "closed"
-        QT_MOC_LITERAL(41, 14),  // "iconPressEvent"
-        QT_MOC_LITERAL(56, 1),  // "p"
-        QT_MOC_LITERAL(58, 17),  // "iconReleasedEvent"
-        QT_MOC_LITERAL(76, 13),  // "iconMoveEvent"
-        QT_MOC_LITERAL(90, 8),  // "pawnMove"
-        QT_MOC_LITERAL(99, 15),  // "gameUpdateAsked"
-        QT_MOC_LITERAL(115, 7),  // "gameWin"
-        QT_MOC_LITERAL(123, 7),  // "gameEnd"
-        QT_MOC_LITERAL(131, 7),  // "endHome"
-        QT_MOC_LITERAL(139, 12),  // "buffPageOpen"
-        QT_MOC_LITERAL(152, 7),  // "buffsel"
-        QT_MOC_LITERAL(160, 4),  // "buff"
-        QT_MOC_LITERAL(165, 9),  // "pausegoon"
-        QT_MOC_LITERAL(175, 9),  // "secUpdate"
-        QT_MOC_LITERAL(185, 4),  // "time"
-        QT_MOC_LITERAL(190, 10)   // "coinUpdate"
+        QT_MOC_LITERAL(25, 6),  // "closed"
+        QT_MOC_LITERAL(32, 14),  // "iconPressEvent"
+        QT_MOC_LITERAL(47, 1),  // "p"
+        QT_MOC_LITERAL(49, 17),  // "iconReleasedEvent"
+        QT_MOC_LITERAL(67, 13),  // "iconMoveEvent"
+        QT_MOC_LITERAL(81, 8),  // "pawnMove"
+        QT_MOC_LITERAL(90, 15),  // "gameUpdateAsked"
+        QT_MOC_LITERAL(106, 7),  // "gameWin"
+        QT_MOC_LITERAL(114, 7),  // "gameEnd"
+        QT_MOC_LITERAL(122, 7),  // "endHome"
+        QT_MOC_LITERAL(130, 12),  // "buffPageOpen"
+        QT_MOC_LITERAL(143, 7),  // "buffsel"
+        QT_MOC_LITERAL(151, 4),  // "buff"
+        QT_MOC_LITERAL(156, 9),  // "pausegoon"
+        QT_MOC_LITERAL(166, 9),  // "secUpdate"
+        QT_MOC_LITERAL(176, 4),  // "time"
+        QT_MOC_LITERAL(181, 10)   // "coinUpdate"
     },
     "GamePage",
     "gameend",
     "",
     "rounds",
-    "gameexit",
     "closed",
     "iconPressEvent",
     "p",
@@ -324,51 +320,49 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGamePageENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  110,    2, 0x06,    1 /* Public */,
-       4,    1,  113,    2, 0x06,    3 /* Public */,
-       5,    0,  116,    2, 0x06,    5 /* Public */,
+       1,    1,  104,    2, 0x06,    1 /* Public */,
+       4,    0,  107,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       6,    1,  117,    2, 0x0a,    6 /* Public */,
-       8,    0,  120,    2, 0x0a,    8 /* Public */,
-       9,    1,  121,    2, 0x0a,    9 /* Public */,
-      10,    0,  124,    2, 0x0a,   11 /* Public */,
-      11,    0,  125,    2, 0x0a,   12 /* Public */,
-      12,    0,  126,    2, 0x0a,   13 /* Public */,
-      13,    0,  127,    2, 0x0a,   14 /* Public */,
-      14,    0,  128,    2, 0x0a,   15 /* Public */,
-      15,    0,  129,    2, 0x0a,   16 /* Public */,
-      16,    1,  130,    2, 0x0a,   17 /* Public */,
-      18,    0,  133,    2, 0x0a,   19 /* Public */,
-      19,    1,  134,    2, 0x0a,   20 /* Public */,
-      21,    0,  137,    2, 0x0a,   22 /* Public */,
+       5,    1,  108,    2, 0x0a,    4 /* Public */,
+       7,    0,  111,    2, 0x0a,    6 /* Public */,
+       8,    1,  112,    2, 0x0a,    7 /* Public */,
+       9,    0,  115,    2, 0x0a,    9 /* Public */,
+      10,    0,  116,    2, 0x0a,   10 /* Public */,
+      11,    0,  117,    2, 0x0a,   11 /* Public */,
+      12,    0,  118,    2, 0x0a,   12 /* Public */,
+      13,    0,  119,    2, 0x0a,   13 /* Public */,
+      14,    0,  120,    2, 0x0a,   14 /* Public */,
+      15,    1,  121,    2, 0x0a,   15 /* Public */,
+      17,    0,  124,    2, 0x0a,   17 /* Public */,
+      18,    1,  125,    2, 0x0a,   18 /* Public */,
+      20,    0,  128,    2, 0x0a,   20 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QPoint,    7,
+    QMetaType::Void, QMetaType::QPoint,    6,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QPoint,    7,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QPoint,    6,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   17,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   20,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   16,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void,
 
        0        // eod
@@ -384,9 +378,6 @@ Q_CONSTINIT const QMetaObject GamePage::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<GamePage, std::true_type>,
         // method 'gameend'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        // method 'gameexit'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'closed'
@@ -432,21 +423,20 @@ void GamePage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         (void)_t;
         switch (_id) {
         case 0: _t->gameend((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 1: _t->gameexit((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->closed(); break;
-        case 3: _t->iconPressEvent((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 4: _t->iconReleasedEvent(); break;
-        case 5: _t->iconMoveEvent((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 6: _t->pawnMove(); break;
-        case 7: _t->gameUpdateAsked(); break;
-        case 8: _t->gameWin(); break;
-        case 9: _t->gameEnd(); break;
-        case 10: _t->endHome(); break;
-        case 11: _t->buffPageOpen(); break;
-        case 12: _t->buffsel((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 13: _t->pausegoon(); break;
-        case 14: _t->secUpdate((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 15: _t->coinUpdate(); break;
+        case 1: _t->closed(); break;
+        case 2: _t->iconPressEvent((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 3: _t->iconReleasedEvent(); break;
+        case 4: _t->iconMoveEvent((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 5: _t->pawnMove(); break;
+        case 6: _t->gameUpdateAsked(); break;
+        case 7: _t->gameWin(); break;
+        case 8: _t->gameEnd(); break;
+        case 9: _t->endHome(); break;
+        case 10: _t->buffPageOpen(); break;
+        case 11: _t->buffsel((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 12: _t->pausegoon(); break;
+        case 13: _t->secUpdate((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 14: _t->coinUpdate(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -459,16 +449,9 @@ void GamePage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             }
         }
         {
-            using _t = void (GamePage::*)(int );
-            if (_t _q_method = &GamePage::gameexit; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 1;
-                return;
-            }
-        }
-        {
             using _t = void (GamePage::*)();
             if (_t _q_method = &GamePage::closed; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 2;
+                *result = 1;
                 return;
             }
         }
@@ -494,13 +477,13 @@ int GamePage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 15)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 16;
+        _id -= 15;
     }
     return _id;
 }
@@ -513,15 +496,8 @@ void GamePage::gameend(int _t1)
 }
 
 // SIGNAL 1
-void GamePage::gameexit(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
-}
-
-// SIGNAL 2
 void GamePage::closed()
 {
-    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Multimedia)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Multimedia)
 
 INCLUDE_DIRECTORIES(
     ${PROJECT_SOURCE_DIR}
@@ -33,7 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
 
         rolepage.h rolepage.cpp rolepage.ui
-        roleedit.h roleedit.cpp
+
         mybutton.h mybutton.cpp
         gamestate.h gamestate.cpp
         shoppage.h shoppage.cpp shoppage.ui
@@ -44,6 +44,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         buffpage.h buffpage.cpp buffpage.ui
         gamepausepage.h gamepausepage.cpp gamepausepage.ui
         gamewinbox.h gamewinbox.cpp gamewinbox.ui
+        detailpage.h detailpage.cpp detailpage.ui
 
 
 
@@ -66,8 +67,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ALIVE PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-
+target_link_libraries(ALIVE PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Multimedia)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

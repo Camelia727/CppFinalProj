@@ -103,7 +103,8 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     , pausepage(nullptr)
     , history(his)
     , keyPressed(QList<bool>(500, false))
-    // , player(new QMediaPlayer(this))
+    , player(new QMediaPlayer(this))
+    , audio(new QAudioOutput(this))
 {
     // setWindowFlag(Qt::FramelessWindowHint); // 边框隐藏
     // setWindowFlags (windowFlags () | Qt::WindowStaysOnTopHint); // 将该页面置顶
@@ -113,6 +114,10 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     ui->timer->setText("60");
     ui->timer->setStyleSheet("color:rgba(255,255,255,255)");
     ui->coins->setStyleSheet("color:rgba(255,215,0,255);");
+    player->setAudioOutput(audio);
+    player->setSource(QUrl("qrc:/music/music/gamemusic.mp3"));
+    audio->setVolume(30);
+    player->play();
     map = gamestate->getMap();
     revive.load(":/buffs/pics/revivebuff.png");
     background.load(":/pics/pics/background.png");
@@ -138,15 +143,12 @@ GamePage::GamePage(History* his, QString name, QWidget *parent)
     connect(gamestate, &GameState::sec, this, &GamePage::secUpdate);
     connect(gamestate, &GameState::coinsUpdate, this, &GamePage::coinUpdate);
 
-    qDebug() << "gamepage init";
-
 }
 
 GamePage::~GamePage()
 {
     delete ui;
     delete gamestate;
-    qDebug() << "gamepage delete";
 }
 
 void GamePage::paintEvent(QPaintEvent *event)
@@ -192,7 +194,6 @@ void GamePage::keyPressEvent(QKeyEvent *event)
     }
     else{
         keyPressed[event->key()] = true;
-        // qDebug() << "key " << event->key() << " pressed";
     }
 
 }
@@ -207,7 +208,6 @@ void GamePage::keyReleaseEvent(QKeyEvent *event)
     }
     else{
         keyPressed[event->key()] = false;
-        // qDebug() << "key " << event->key() << " pressed";
     }
 }
 
@@ -217,7 +217,6 @@ void GamePage::closeEvent(QCloseEvent *event)
     int coins = gamestate->getCoins();
     history->gainCoins(coins * gamestate->getCoinX());
     emit gameend(rounds);
-    qDebug() << "gamepage closeevent";
     event->accept();
 }
 
@@ -251,7 +250,6 @@ void GamePage::pawnMove()
         direction.rx() /= std::sqrt(2);
         direction.ry() /= std::sqrt(2);
     }
-    // qDebug() << "direction : " << direction.x() << "," << direction.y();
     gamestate->PawnMove(direction);
     update();
 }
@@ -263,7 +261,6 @@ void GamePage::gameUpdateAsked()
 
 void GamePage::gameWin()
 {
-    qDebug() << "game end";
     update();
     GameWinBox* losebox = new GameWinBox(this);
     losebox->setGeometry(360,200,400,300);

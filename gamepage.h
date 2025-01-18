@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QMediaPlayer>
+#include <QAudioOutput>
 #include "gamestate.h"
 #include "gamelosebox.h"
 #include "history.h"
@@ -89,6 +90,7 @@ private:
     QTimer* pawnMoveTimer;
     QList<bool> keyPressed;
     QMediaPlayer* player;
+    QAudioOutput* audio;
 
 protected:
     void paintEvent(QPaintEvent* event) override;
@@ -98,7 +100,6 @@ protected:
 
 signals:
     void gameend(int rounds);
-    void gameexit(int rounds);
     void closed();
 
 public slots:

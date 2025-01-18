@@ -18,21 +18,6 @@ ShopPage::ShopPage(History* his, QWidget *parent)
         labels[i]->setStyleSheet("color:rgba(234,240,68,255);font-size:14px;");
         labels[i]->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(i))) + "/5");
     }
-    // ui->label->setStyleSheet("color:rgba(234,240,68,255);");
-    // ui->label_2->setStyleSheet("color:rgba(234,240,68,255);");
-    // ui->label_3->setStyleSheet("color:rgba(234,240,68,255);");
-    // ui->label_4->setStyleSheet("color:rgba(234,240,68,255);");
-    // ui->label_5->setStyleSheet("color:rgba(234,240,68,255);");
-    // ui->label_6->setStyleSheet("color:rgba(234,240,68,255);");
-
-    // ui->label->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(0))) + "/5");
-    // ui->label_2->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(1))) + "/5");
-    // ui->label_3->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(2))) + "/5");
-    // ui->label_4->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(3))) + "/5");
-    // ui->label_5->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(4))) + "/5");
-    // ui->label_6->setText("售价：50（" + QString::number(history->getbuff(static_cast<BUFFS>(5))) + "/1");
-
-
     connect(ui->hpbtn, &BuffBtn::buybuff, this, &ShopPage::buy);
     connect(ui->atkbtn, &BuffBtn::buybuff, this, &ShopPage::buy);
     connect(ui->atpbtn, &BuffBtn::buybuff, this, &ShopPage::buy);

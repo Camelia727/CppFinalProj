@@ -54,7 +54,6 @@ void BuffPage::buffselect(int sel)
 BuffWidget::BuffWidget(int b, QWidget *parent)
     : QWidget{parent}
 {
-    qDebug() << "buffwidget init";
     buff = b;
     size = QSize(270, 324);
     rect.setRect(0.1*size.width(), 0.1*size.height(), 0.8*size.width(), 0.8*size.height());

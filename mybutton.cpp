@@ -110,7 +110,6 @@ void BuffBtn::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.drawPixmap(QRect(0,0,size.width(), size.height()), pic);
     painter.drawPixmap(rect, buffpic);
-    // qDebug() << "rect : ";
 }
 
 BuffBtn::BuffBtn(int buff, QWidget *parent)

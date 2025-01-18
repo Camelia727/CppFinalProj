@@ -10,6 +10,7 @@
 #include <mybutton.h>
 #include "shoppage.h"
 #include "gamepage.h"
+#include "detailpage.h"
 #include "history.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +36,9 @@ private:
     History* history;
     RolePage* role_page;
     GamePage* game_page;
+    DetailPage* detail_page;
+    QMediaPlayer* player;
+    QAudioOutput* audio;
     bool shopOn;
 protected:
     void closeEvent(QCloseEvent* event) override;
@@ -49,6 +53,5 @@ public slots:
     void closeShop();
     void buyBuff(int buff, int coin);
     void gameEnd(int rounds);
-    void gameExit(int rounds);
 };
 #endif // HOMEPAGE_H

@@ -7,7 +7,6 @@
 #include <QTextEdit>
 #include <QPainter>
 #include "gamepage.h"
-#include "roleedit.h"
 #include "rolewidget.h"
 
 namespace Ui {

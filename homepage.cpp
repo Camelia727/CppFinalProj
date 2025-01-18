@@ -6,6 +6,8 @@ HomePage::HomePage(QWidget *parent)
     , ui(new Ui::HomePage)
     , shopOn(false)
     , history(new History)
+    , player(new QMediaPlayer(this))
+    , audio(new QAudioOutput(this))
 {
     ui->setupUi(this);
 
@@ -15,7 +17,14 @@ HomePage::HomePage(QWidget *parent)
     role_page = new RolePage(this);
     role_page->hide();
     game_page = nullptr;
+    detail_page = new DetailPage(this);
+    detail_page->hide();
     loadHistory();
+
+    player->setAudioOutput(audio);
+    player->setSource(QUrl("qrc:/music/music/homemusic.mp3"));
+    audio->setVolume(30);
+    player->play();
 
     connect(ui->gamebtn, &gameBtn::game_clicked, this, &HomePage::openRole);
     connect(ui->shopbtn, &shopBtn::shop_clicked, this, &HomePage::openShop);
@@ -52,7 +61,6 @@ void HomePage::saveHistory() const
 
     // 检查文件是否存在
     if (!file.exists()) {
-        // 如果文件不存在，创建文件并写入"newfile"
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             qWarning() << "Could not open file for writing:" << file.errorString();
             return;
@@ -62,8 +70,6 @@ void HomePage::saveHistory() const
         for (int i = 0; i < 5; i++)
             out << history->getbuff(static_cast<BUFFS>(i)) << " ";
     } else {
-        // 如果文件存在，打开文件并写入"exist"
-        qDebug() << "open file";
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
             qWarning() << "Could not open file for writing:" << file.errorString();
             return;
@@ -179,21 +185,20 @@ void HomePage::openRole()
 
 void HomePage::openGame(QString name)
 {
-    qDebug() << "opengame called";
     if (game_page){
         delete game_page;
         game_page = nullptr;
     }
     game_page = new GamePage(history, name);
     connect(game_page, &GamePage::gameend, this, &HomePage::gameEnd);
-    connect(game_page, &GamePage::gameexit, this, &HomePage::gameExit);
     game_page->show();
     hide();
+    player->stop();
 }
 
 void HomePage::openDetail()
 {
-
+    detail_page->show();
 }
 
 void HomePage::openSave()
@@ -216,6 +221,7 @@ void HomePage::openShop()
             connect(shop_page, &ShopPage::buyBuff, this, &HomePage::buyBuff);
             connect(shop_page, &ShopPage::shopClosed, this, &HomePage::closeShop);
             shop_page->show();
+            hide();
         }
     }
 }
@@ -223,6 +229,7 @@ void HomePage::openShop()
 void HomePage::closeShop()
 {
     shopOn = false;
+    show();
 }
 
 void HomePage::buyBuff(int buff, int coin)
@@ -234,21 +241,10 @@ void HomePage::buyBuff(int buff, int coin)
 void HomePage::gameEnd(int rounds)
 {
     show();
+    player->play();
     history->HistoryUpdate(rounds);
     saveHistory();
     disconnect(game_page, &GamePage::gameend, this, &HomePage::gameEnd);
-    disconnect(game_page, &GamePage::gameexit, this, &HomePage::gameExit);
     delete game_page;
     game_page = nullptr;
-}
-
-void HomePage::gameExit(int rounds)
-{
-    history->HistoryUpdate(rounds);
-    // qDebug() << history->getGamecount();
-    disconnect(game_page, &GamePage::gameend, this, &HomePage::gameEnd);
-    disconnect(game_page, &GamePage::gameexit, this, &HomePage::gameExit);
-    delete game_page;
-    game_page = nullptr;
-    close();
 }

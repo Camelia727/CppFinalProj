@@ -178,8 +178,10 @@ F:/QTproj/ALIVE/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release/ALIVE_autogen/EWIEGA
   F:/Qt/6.5.3/mingw_64/include/QtGui/qvectornd.h \
   F:/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
   F:/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/QAudioOutput \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/QMediaPlayer \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qaudio.h \
+  F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qaudiooutput.h \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qmediaenumdebug.h \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
   F:/Qt/6.5.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
